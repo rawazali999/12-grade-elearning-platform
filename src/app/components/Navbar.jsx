@@ -26,7 +26,12 @@ export default function Navbar() {
       <div
         className={`navbar-menu relative z-50 ${menuOpen ? "block" : "hidden"}`}
       >
-        <div className="navbar-backdrop fixed inset-0  opacity-25" />
+        <div
+          onClick={() => {
+            setMenuOpen(!menuOpen);
+          }}
+          className="navbar-backdrop fixed inset-0  opacity-25"
+        />
         <aside className="fixed top-0 left-0 bottom-0 flex flex-col w-2/3 max-w-xs p-6  bg-gray-100 border-r overflow-y-auto">
           <div className="flex justify-end mb-8">
             <button

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 
 export default function RegisterForm() {
   const [name, setName] = useState("");
@@ -16,7 +17,7 @@ export default function RegisterForm() {
     e.preventDefault();
 
     if (!name || !email || !password) {
-      setError("All fields are necessary.");
+      setError("Please fill in all fields.");
       return;
     }
 
@@ -35,7 +36,7 @@ export default function RegisterForm() {
         setError("User already exists.");
         return;
       }
-
+      // register user
       const res = await fetch("api/register", {
         method: "POST",
         headers: {
@@ -47,11 +48,20 @@ export default function RegisterForm() {
           password,
         }),
       });
-
+      // if registration is successful, sign in user
       if (res.ok) {
-        const form = e.target;
-        form.reset();
-        router.push("/login");
+        const res = await signIn("credentials", {
+          email,
+          password,
+          redirect: false,
+        });
+
+        if (res.error) {
+          setError("Invalid Credentials");
+          return;
+        }
+
+        router.replace("/");
       } else {
         console.log("User registration failed.");
       }
