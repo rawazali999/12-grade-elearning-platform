@@ -7,6 +7,7 @@ import { signOut } from "next-auth/react";
 import UserInfo from "./UserInfo";
 import ThemeToggle from "./theme/ThemeToggle";
 import { TbLogout } from "react-icons/tb";
+import { IoMdSchool } from "react-icons/io";
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -15,8 +16,12 @@ export default function Navbar() {
       {/* navbar */}
       <nav className="flex items-center justify-between bg-cyan-900 p-3 text-white ">
         {/* Logo */}
-        <Link className="text-md font-semibold text-white " href="/">
-          12 Grade E-learning Platform
+        <Link
+          className="text-md flex items-center gap-2 font-semibold  text-white "
+          href="/"
+        >
+          <IoMdSchool className="text-5xl text-white" />
+          <p>12 Grade E-learning Platform</p>
         </Link>
 
         {/* Nav Links */}

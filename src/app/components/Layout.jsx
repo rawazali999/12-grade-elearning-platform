@@ -1,16 +1,13 @@
 import Navbar from "@components/Navbar";
 import React from "react";
-
-export const metadata = {
-  title: "12 Grade E learning platform ",
-  description: "12 Grade E learning platform ",
-};
+import Footer from "@components/Footer";
 
 export default function Layout({ children }) {
   return (
-    <>
+    <div>
       <Navbar />
       {children}
-    </>
+      <Footer />
+    </div>
   );
 }

@@ -7,7 +7,6 @@
       "@models/*": ["./models/*"],
       "@lib/*": ["./lib/*"],
       "@layouts/*": ["./src/app/layouts/*"],
-
     }
   }
 }

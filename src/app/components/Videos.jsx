@@ -62,6 +62,8 @@ const videos = [
 
 export default function Videos() {
   const [currentVideo, setCurrentVideo] = useState(videos[0].src);
+  const [checkedCount, setCheckedCount] = useState(0);
+  const progress = Math.floor((checkedCount / videos.length) * 100);
 
   const changeVideo = (videoSrc) => {
     setCurrentVideo(videoSrc);
@@ -89,14 +91,29 @@ export default function Videos() {
           ></iframe>
         </div>
         <div className="w-full self-end sm:w-1/3  ">
-          <h2 className="pr-4 text-right text-xl tracking-wider">وانەکان</h2>
+          <div className="flex flex-row-reverse items-center justify-around p-2">
+            <h2 className="pr-4 text-right text-xl tracking-wider">وانەکان</h2>
+            <div
+              className="radial-progress"
+              style={{ "--value": `${progress}` }}
+            >
+              {progress}%
+            </div>
+          </div>
+
           <div className="m-2 flex h-96 w-full flex-col overflow-y-auto  p-4  text-right ">
             {videos.map((video, index) => (
               <div
                 key={index}
                 className={` flex w-full   justify-between  border px-4 py-3  `}
               >
-                <input type="checkbox" className="checkbox" />
+                <input
+                  onChange={(e) =>
+                    setCheckedCount(checkedCount + (e.target.checked ? 1 : -1))
+                  }
+                  type="checkbox"
+                  className="checkbox"
+                />
 
                 <p
                   className={`  cursor-pointer ${
