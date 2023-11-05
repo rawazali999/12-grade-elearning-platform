@@ -1,9 +1,6 @@
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "./Providers";
-import Navbar from "./components/Navbar";
-
-const inter = Inter({ subsets: ["latin"] });
+import { ThemeProvider } from "./components/theme/themeContext";
 
 export const metadata = {
   title: "12 Grade E learning platform ",
@@ -12,10 +9,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <AuthProvider>{children}</AuthProvider>
-      </body>
+    <html lang="en" >
+      <ThemeProvider>
+        <body className="bg-white dark:bg-slate-900">
+          <AuthProvider>{children}</AuthProvider>
+        </body>
+      </ThemeProvider>
     </html>
   );
 }

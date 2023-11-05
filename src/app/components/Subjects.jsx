@@ -75,10 +75,13 @@ export const Subjects = () => {
   ];
   return (
     <>
-      <h1 className="text-center text-3xl font-bold tracking-wider m-2">
+      <h1 className="m-2 text-center text-3xl font-bold tracking-wider dark:text-gray-100">
         Subjects
       </h1>
-      <div className="flex flex-wrap m-2 justify-center ">
+      <div
+        className="m-2 flex flex-wrap justify-center dark:text-gray-100"
+        id="subjects"
+      >
         {subjects.map((subject) => (
           <Card
             key={subject.id}
