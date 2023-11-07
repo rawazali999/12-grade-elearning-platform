@@ -1,68 +1,25 @@
 "use client";
-import React, { useState } from "react";
+import getSubject from "@/lib/getSubject";
+import React, { useEffect, useState } from "react";
 import { AiOutlineYoutube } from "react-icons/ai";
 
-const videos = [
-  {
-    id: 1,
-    src: "https://www.youtube.com/embed/71Mcm7ejGMA",
-    title: "بابەتی 1 - شێوازی ڕێژەی ڕاگەیاندن",
-  },
-  {
-    id: 2,
-    src: "https://www.youtube.com/embed/Jx3jqaHCnyw",
-    title: "بابەتی 2 - شێوازی ڕێژەی دانانی",
-  },
-  {
-    id: 3,
-    src: "https://www.youtube.com/embed/dWyUYTXSV0E",
-    title: "بابەتی 3 - شێوازی ڕێژەی داخوازی",
-  },
-  {
-    id: 4,
-    src: "https://www.youtube.com/embed/E6c6TxuEOgM",
-    title: "بابەتی 4 - شێوازی ڕێژەی مەرجی",
-  },
-  {
-    id: 5,
-    src: "https://www.youtube.com/embed/jvJ10Icz_Ns",
-    title: "بابەتی 5 - کاری چاوگی بوون",
-  },
-  {
-    id: 6,
-    src: "https://www.youtube.com/embed/Zln0P16z5wo",
-    title: "بابەتی 6 - ئەرکی ( ە ) لە ڕێزمانی کوردیدا",
-  },
-  {
-    id: 7,
-    src: "https://www.youtube.com/embed/CUKzZdSvPE8",
-    title: " بابەتی 7 - ئەرکی جێناوە کەسییە لکاوەکان وەک بکەر",
-  },
-  {
-    id: 8,
-    src: "https://www.youtube.com/embed/bSRqiI0zhHQ",
-    title: "بابەتی 8 - ئەرکی جێناوە کەسییە لکاوەکان وەک بەرکار",
-  },
-  {
-    id: 9,
-    src: "https://www.youtube.com/embed/B8lkIAneMKs",
-    title: "بابەتی 9 - ئەرکی جێناوە کەسییە لکاوەکان وەک تەواوکەری بەیاریدە",
-  },
-  {
-    id: 10,
-    src: "https://www.youtube.com/embed/_htrJnCZnWU",
-    title: "بابەتی 10 - هاوەڵناو لە ڕووی ڕۆنانەوە",
-  },
-  {
-    id: 11,
-    src: "https://www.youtube.com/embed/prZ98JGzVjc",
-    title: " بابەتی 11 - جۆرەکانی هاوەڵکار لە ڕووی پێکهاتنەوە",
-  },
-];
-
-export default function Videos() {
-  const [currentVideo, setCurrentVideo] = useState(videos[0].src);
+export default function Videos({ subject }) {
+  const [videos, setVideos] = useState([]);
+  const [currentVideo, setCurrentVideo] = useState();
   const [checkedCount, setCheckedCount] = useState(0);
+  const [data, setData] = useState();
+  console.log(videos);
+
+  useEffect(() => {
+    async function getVideos() {
+      const data = await getSubject(subject);
+      setVideos(data.course1.lessons);
+      setCurrentVideo(data.course1.lessons[0].src);
+      setData(data);
+    }
+    getVideos();
+  }, [subject]);
+
   const progress = Math.floor((checkedCount / videos.length) * 100);
 
   const changeVideo = (videoSrc) => {
@@ -71,12 +28,12 @@ export default function Videos() {
 
   return (
     <div className="flex  w-full flex-col  p-4">
-      <div className="my-4 flex flex-col self-center text-2xl">
+      <div className="my-4 flex flex-col self-center text-center text-2xl">
         <h2>
           <AiOutlineYoutube className="inline-block text-2xl" />
-          ڤیدیۆی زمان و ئەدەبی کوردی
+          {data?.kurdish_title}
         </h2>
-        <span>م. سالم محمد کوردی پۆلی ١٢ ڕێزمان</span>
+        <span>{data?.course1?.title}</span>
       </div>
 
       <div className="flex w-full flex-col rounded-lg border  p-6 sm:flex-row">
@@ -102,10 +59,10 @@ export default function Videos() {
           </div>
 
           <div className="m-2 flex h-96 w-full flex-col overflow-y-auto  p-4  text-right ">
-            {videos.map((video, index) => (
+            {videos.map((video) => (
               <div
-                key={index}
-                className={` flex w-full   justify-between  border px-4 py-3  `}
+                key={video.id}
+                className={"flex w-full   justify-between  border px-4 py-3"}
               >
                 <input
                   onChange={(e) =>

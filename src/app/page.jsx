@@ -1,8 +1,8 @@
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { authOptions } from "@api/auth/[...nextauth]/route";
+import Subjects from "@components/Subjects";
 import Hero from "@components/Hero";
-import { Subjects } from "@components/Subjects";
 import { CommonQuestions } from "@components/CommonQuestions";
 import Layout from "./components/Layout";
 

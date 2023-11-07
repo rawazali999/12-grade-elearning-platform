@@ -8,6 +8,7 @@ import UserInfo from "./UserInfo";
 import ThemeToggle from "./theme/ThemeToggle";
 import { TbLogout } from "react-icons/tb";
 import { IoMdSchool } from "react-icons/io";
+import { AiOutlineCloseCircle, AiOutlineHome } from "react-icons/ai";
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -81,27 +82,14 @@ export default function Navbar() {
           }}
           className="navbar-backdrop fixed inset-0  opacity-25"
         />
-        <aside className="fixed bottom-0 left-0 top-0 flex max-w-sm  flex-col overflow-y-auto border-r  bg-gray-50 px-8 py-4 dark:bg-slate-800 dark:text-gray-100">
+        <aside className="fixed bottom-0 left-0 top-0 flex max-w-sm  flex-col overflow-y-auto border-r  bg-gray-50 px-8 py-4 text-gray-950 dark:bg-slate-800 dark:text-gray-100 ">
           <div className="mb-8 flex justify-end">
             <button
               onClick={() => {
                 setMenuOpen(!menuOpen);
               }}
             >
-              <svg
-                className="h-6 w-6 cursor-pointer  hover:text-gray-500"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={3}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
+              <AiOutlineCloseCircle className="text-3xl" />
             </button>
           </div>
           <UserInfo />
@@ -110,8 +98,9 @@ export default function Navbar() {
               <li className="mb-1">
                 <Link
                   href="/"
-                  className="block rounded p-3 text-sm font-semibold  hover:bg-cyan-900 hover:text-gray-100"
+                  className=" text-md flex gap-2 rounded p-3 font-semibold  hover:bg-cyan-900 hover:text-gray-100"
                 >
+                  <AiOutlineHome />
                   Home
                 </Link>
               </li>
@@ -144,7 +133,7 @@ export default function Navbar() {
           </div>
           <div className="my-auto">
             <button
-              className=" mb-3 flex w-full items-center justify-center gap-2 rounded   border-2 border-gray-900 px-4 py-2 text-center  text-lg leading-loose hover:bg-cyan-900  dark:border-gray-100  "
+              className=" mb-3 flex w-full items-center justify-center gap-2 rounded   border-2 border-gray-900 px-4 py-2 text-center  text-lg leading-loose hover:bg-cyan-900  hover:text-gray-100 dark:border-gray-100 "
               onClick={() => {
                 signOut();
               }}
