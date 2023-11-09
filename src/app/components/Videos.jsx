@@ -2,13 +2,27 @@
 import getSubject from "@/lib/getSubject";
 import React, { useEffect, useState } from "react";
 import { AiOutlineYoutube } from "react-icons/ai";
+import { useSession } from "next-auth/react";
 
 export default function Videos({ subject }) {
   const [videos, setVideos] = useState([]);
   const [currentVideo, setCurrentVideo] = useState();
   const [checkedCount, setCheckedCount] = useState(0);
   const [data, setData] = useState();
-  console.log(videos);
+
+  const { data: session } = useSession();
+
+  function getInputStatus() {
+    const inputs = document.querySelectorAll(".checkbox");
+    const inputsArr = Array.from(inputs);
+    const inputsStatus = inputsArr.map((input) => {
+      return {
+        lessonId: input.id,
+        checked: input.checked,
+      };
+    });
+    return inputsStatus;
+  }
 
   useEffect(() => {
     async function getVideos() {
@@ -20,10 +34,44 @@ export default function Videos({ subject }) {
     getVideos();
   }, [subject]);
 
-  const progress = Math.floor((checkedCount / videos.length) * 100);
+  const progressValue = Math.floor((checkedCount / videos.length) * 100);
 
-  const changeVideo = (videoSrc) => {
-    setCurrentVideo(videoSrc);
+  const handleProgress = async (e) => {
+    setCheckedCount(checkedCount + (e.target.checked ? 1 : -1));
+
+    try {
+      const progressExists = await fetch(
+        `${process.env.NEXTAUTH_URL}/api/progress`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userEmail: session?.user?.email,
+            courseId: data?.course1?.id,
+            subject: data?.title,
+            title: data?.course1?.kurdish_title,
+            lessons: getInputStatus(),
+          }),
+        },
+      );
+
+      const updatedProgress = await fetch(
+        `${process.env.NEXTAUTH_URL}/api/progress`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userEmail: session?.user?.email,
+            courseId: data?.course1?.id,
+            lessons: getInputStatus(),
+          }),
+        },
+      );
+    } catch (err) {}
   };
 
   return (
@@ -33,7 +81,7 @@ export default function Videos({ subject }) {
           <AiOutlineYoutube className="inline-block text-2xl" />
           {data?.kurdish_title}
         </h2>
-        <span>{data?.course1?.title}</span>
+        <span>{data?.course1?.kurdish_title}</span>
       </div>
 
       <div className="flex w-full flex-col rounded-lg border  p-6 sm:flex-row">
@@ -52,9 +100,9 @@ export default function Videos({ subject }) {
             <h2 className="pr-4 text-right text-xl tracking-wider">وانەکان</h2>
             <div
               className="radial-progress"
-              style={{ "--value": `${progress}` }}
+              style={{ "--value": `${progressValue}` }}
             >
-              {progress}%
+              {progressValue}%
             </div>
           </div>
 
@@ -65,9 +113,8 @@ export default function Videos({ subject }) {
                 className={"flex w-full   justify-between  border px-4 py-3"}
               >
                 <input
-                  onChange={(e) =>
-                    setCheckedCount(checkedCount + (e.target.checked ? 1 : -1))
-                  }
+                  id={video.id}
+                  onChange={handleProgress}
                   type="checkbox"
                   className="checkbox"
                 />
@@ -78,7 +125,7 @@ export default function Videos({ subject }) {
                       ? "text-black dark:text-white"
                       : ""
                   }`}
-                  onClick={() => changeVideo(video.src)}
+                  onClick={() => setCurrentVideo(video.src)}
                 >
                   {video.title}
                 </p>

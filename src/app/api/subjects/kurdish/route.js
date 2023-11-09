@@ -8,7 +8,8 @@ export async function GET() {
     imageUrl: "kurdish.jpg",
     book: "https://drive.google.com/file/d/10uVFOkUN5ANtRyW1uyBhOBI0EtYEnDvQ/view",
     course1: {
-      title: "م. سالم محمد کوردی پۆلی ١٢ ڕێزمان",
+      id: 1234561232131,
+      kurdish_title: "م. سالم محمد کوردی پۆلی ١٢ ڕێزمان",
       lessons: [
         {
           id: 1,

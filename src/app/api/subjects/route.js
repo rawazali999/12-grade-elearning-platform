@@ -30,14 +30,14 @@ const subjects = [
     imageUrl: "sunrise12.jpg",
   },
   {
-    id: 4,
+    id: 5,
     title: "Scientific Math",
     original_title: " بیرکاری بۆ هەموان - زانستی ",
     route: "scientific-math",
     imageUrl: "scientific_math.jpg",
   },
   {
-    id: 5,
+    id: 6,
     title: "Biology",
     original_title: "زانست بۆ هەمووان - زیندەزانی ",
     route: "biology",
@@ -45,21 +45,21 @@ const subjects = [
   },
 
   {
-    id: 6,
+    id: 7,
     title: "Physics",
     original_title: "زانست بۆ هەمووان - فیزیا",
     route: "physics",
     imageUrl: "physics.jpg",
   },
   {
-    id: 7,
+    id: 8,
     title: "Chemistry",
     original_title: "زانست بۆ هەمووان - کیمیا",
     route: "chemistry",
     imageUrl: "chemistry.jpg",
   },
   {
-    id: 8,
+    id: 9,
     title: "Literary Math",
     original_title: "بیرکاری بۆ هەموان - ئەدەبی",
     route: "literary-math",
@@ -67,21 +67,21 @@ const subjects = [
   },
 
   {
-    id: 9,
+    id: 10,
     title: "Economic geography",
     original_title: " جوگرافیای ئێکۆنۆمی",
     route: "economic-geography",
     imageUrl: "economic_geography.jpg",
   },
   {
-    id: 10,
+    id: 11,
     title: "History",
     original_title: "مێژووی نوێ و ‌هاوچەرخ",
     route: "history",
     imageUrl: "history.jpg",
   },
   {
-    id: 11,
+    id: 12,
     title: "Economy",
     original_title: "ئابووری",
     route: "economy",
