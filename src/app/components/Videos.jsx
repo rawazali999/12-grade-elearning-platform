@@ -3,74 +3,81 @@ import getSubject from "@/lib/getSubject";
 import React, { useEffect, useState } from "react";
 import { AiOutlineYoutube } from "react-icons/ai";
 import { useSession } from "next-auth/react";
+import getOrCreateProgress from "@/lib/getOrCreateProgress";
 
 export default function Videos({ subject }) {
-  const [videos, setVideos] = useState([]);
-  const [currentVideo, setCurrentVideo] = useState();
-  const [checkedCount, setCheckedCount] = useState(0);
-  const [data, setData] = useState();
-
-  const { data: session } = useSession();
-
-  function getInputStatus() {
+  const getInputStatus = () => {
     const inputs = document.querySelectorAll(".checkbox");
     const inputsArr = Array.from(inputs);
     const inputsStatus = inputsArr.map((input) => {
       return {
-        lessonId: input.id,
+        id: input.id,
+        title: input.nextSibling.textContent,
         checked: input.checked,
       };
     });
     return inputsStatus;
-  }
+  };
+
+  const [videos, setVideos] = useState([]);
+  const [currentVideo, setCurrentVideo] = useState();
+  const [checkedCount, setCheckedCount] = useState(0);
+  const [data, setData] = useState();
+  const [progressValue, setProgressValue] = useState(0);
+
+  const { data: session } = useSession();
 
   useEffect(() => {
     async function getVideos() {
       const data = await getSubject(subject);
-      setVideos(data.course1.lessons);
-      setCurrentVideo(data.course1.lessons[0].src);
       setData(data);
-    }
-    getVideos();
-  }, [subject]);
+      setCurrentVideo(data.course1.lessons[0].src);
+      const progress = await getOrCreateProgress(
+        session,
+        data,
+        getInputStatus(),
+      );
 
-  const progressValue = Math.floor((checkedCount / videos.length) * 100);
+      if (progress) {
+        setVideos(progress);
+
+        const newCheckedCount = progress.filter(
+          (lesson) => lesson.checked,
+        ).length;
+        setCheckedCount(newCheckedCount);
+        setProgressValue(Math.round((checkedCount / videos.length) * 100));
+      }
+    }
+
+    getVideos();
+  }, [subject, session, checkedCount, videos.length]);
 
   const handleProgress = async (e) => {
-    setCheckedCount(checkedCount + (e.target.checked ? 1 : -1));
+    const newCheckedCount = checkedCount + (e.target.checked ? 1 : -1);
+    setCheckedCount(newCheckedCount);
+    const newProgressValue = Math.round(
+      (newCheckedCount / videos.length) * 100,
+    );
+    setProgressValue(newProgressValue);
 
     try {
-      const progressExists = await fetch(
-        `${process.env.NEXTAUTH_URL}/api/progress`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
+      if ((session, data)) {
+        const progress = await fetch(
+          `${process.env.NEXTAUTH_URL}/api/progress/update`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              userEmail: session?.user?.email,
+              courseId: data?.course1?.id,
+              subject: data?.title,
+              lessons: getInputStatus(),
+            }),
           },
-          body: JSON.stringify({
-            userEmail: session?.user?.email,
-            courseId: data?.course1?.id,
-            subject: data?.title,
-            title: data?.course1?.kurdish_title,
-            lessons: getInputStatus(),
-          }),
-        },
-      );
-
-      const updatedProgress = await fetch(
-        `${process.env.NEXTAUTH_URL}/api/progress`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            userEmail: session?.user?.email,
-            courseId: data?.course1?.id,
-            lessons: getInputStatus(),
-          }),
-        },
-      );
+        );
+      }
     } catch (err) {}
   };
 
@@ -117,6 +124,7 @@ export default function Videos({ subject }) {
                   onChange={handleProgress}
                   type="checkbox"
                   className="checkbox"
+                  checked={video.checked}
                 />
 
                 <p
