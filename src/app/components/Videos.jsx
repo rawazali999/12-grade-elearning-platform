@@ -4,8 +4,18 @@ import React, { useEffect, useState } from "react";
 import { AiOutlineYoutube } from "react-icons/ai";
 import { useSession } from "next-auth/react";
 import getOrCreateProgress from "@/lib/getOrCreateProgress";
+import Spinner from "@components/Spinner";
 
 export default function Videos({ subject }) {
+  const [videos, setVideos] = useState([]);
+  const [currentVideo, setCurrentVideo] = useState();
+  const [checkedCount, setCheckedCount] = useState(0);
+  const [data, setData] = useState();
+  const [progressValue, setProgressValue] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const { data: session } = useSession();
+
   const getInputStatus = () => {
     const inputs = document.querySelectorAll(".checkbox");
     const inputsArr = Array.from(inputs);
@@ -13,46 +23,47 @@ export default function Videos({ subject }) {
       return {
         id: input.id,
         title: input.nextSibling.textContent,
+        src: input.videosrc,
         checked: input.checked,
       };
     });
     return inputsStatus;
   };
 
-  const [videos, setVideos] = useState([]);
-  const [currentVideo, setCurrentVideo] = useState();
-  const [checkedCount, setCheckedCount] = useState(0);
-  const [data, setData] = useState();
-  const [progressValue, setProgressValue] = useState(0);
-
-  const { data: session } = useSession();
+  useEffect(() => {
+    async function getData() {
+      const subjectData = await getSubject(subject);
+      setData(subjectData);
+      setCurrentVideo(subjectData.course1.lessons[0].src);
+      setVideos(subjectData.course1.lessons);
+    }
+    getData();
+  }, [subject]);
 
   useEffect(() => {
     async function getVideos() {
-      const data = await getSubject(subject);
-      setData(data);
-      setCurrentVideo(data.course1.lessons[0].src);
       const progress = await getOrCreateProgress(
-        session,
-        data,
-        getInputStatus(),
+        session?.user?.email,
+        data?.course1?.id,
+        data?.title,
+        videos,
       );
-
-      if (progress) {
-        setVideos(progress);
-
-        const newCheckedCount = progress.filter(
-          (lesson) => lesson.checked,
-        ).length;
-        setCheckedCount(newCheckedCount);
-        setProgressValue(Math.round((checkedCount / videos.length) * 100));
-      }
+      setVideos(progress);
+      const newCheckedCount = progress.filter(
+        (lesson) => lesson.checked,
+      ).length;
+      setCheckedCount(newCheckedCount);
+      setProgressValue(Math.round((checkedCount / videos.length) * 100));
     }
-
-    getVideos();
-  }, [subject, session, checkedCount, videos.length]);
+    // Call getVideos and wait for it to finish
+    (async () => {
+      await getVideos();
+    })();
+  }, [session, data]);
 
   const handleProgress = async (e) => {
+    setIsLoading(true);
+
     const newCheckedCount = checkedCount + (e.target.checked ? 1 : -1);
     setCheckedCount(newCheckedCount);
     const newProgressValue = Math.round(
@@ -61,8 +72,8 @@ export default function Videos({ subject }) {
     setProgressValue(newProgressValue);
 
     try {
-      if ((session, data)) {
-        const progress = await fetch(
+      if (session && data) {
+        const response = await fetch(
           `${process.env.NEXTAUTH_URL}/api/progress/update`,
           {
             method: "PUT",
@@ -77,8 +88,10 @@ export default function Videos({ subject }) {
             }),
           },
         );
+        const progress = await response.json();
       }
     } catch (err) {}
+    setIsLoading(false);
   };
 
   return (
@@ -121,10 +134,12 @@ export default function Videos({ subject }) {
               >
                 <input
                   id={video.id}
+                  // my-video is a custom attribute
+                  videosrc={video.src}
                   onChange={handleProgress}
+                  checked={video.checked}
                   type="checkbox"
                   className="checkbox"
-                  checked={video.checked}
                 />
 
                 <p

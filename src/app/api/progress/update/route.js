@@ -6,13 +6,8 @@ export async function PUT(req) {
   await connectMongoDB();
   const { userEmail, courseId, subject, lessons } = await req.json();
   // console.log("Request body:", userEmail, courseId, subject, lessons);
-  const progress = await Progress.findOne({ courseId, userEmail, subject });
-  // console.log("Progress found:", progress);
-
-  // Check if progress exists
-  if (!progress) {
-    return NextResponse.json({ error: "No progress found" });
-  }
+  const progress = await Progress.findOne({ userEmail, courseId, subject });
+  // console.log("Progress found for update:", progress);
 
   await Progress.updateOne(
     { userEmail: progress.userEmail, courseId: courseId, subject: subject },
