@@ -5,6 +5,7 @@ import { AiOutlineYoutube } from "react-icons/ai";
 import { useSession } from "next-auth/react";
 import getOrCreateProgress from "@/lib/getOrCreateProgress";
 import Spinner from "@components/Spinner";
+import { set } from "mongoose";
 
 export default function Videos({ subject }) {
   const [videos, setVideos] = useState([]);
@@ -53,44 +54,52 @@ export default function Videos({ subject }) {
         (lesson) => lesson.checked,
       ).length;
       setCheckedCount(newCheckedCount);
-      setProgressValue(Math.round((checkedCount / videos.length) * 100));
+      setProgressValue(Math.round((newCheckedCount / videos.length) * 100));
     }
     // Call getVideos and wait for it to finish
     (async () => {
+      setIsLoading(true);
       await getVideos();
+      setIsLoading(false);
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session, data]);
 
   const handleProgress = async (e) => {
+    const videoId = e.target.id;
+    const isChecked = e.target.checked;
+
+    // Optimistically update the state to avoid waiting for the server response
+    // that make the input state to be updated immediately
+    setVideos((prevVideos) =>
+      prevVideos.map((video) =>
+        video.id === videoId ? { ...video, checked: isChecked } : video,
+      ),
+    );
     setIsLoading(true);
 
+    try {
+      if (session && data) {
+        await fetch(`${process.env.NEXTAUTH_URL}/api/progress/update`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userEmail: session?.user?.email,
+            courseId: data?.course1?.id,
+            subject: data?.title,
+            lessons: getInputStatus(),
+          }),
+        });
+      }
+    } catch (err) {}
     const newCheckedCount = checkedCount + (e.target.checked ? 1 : -1);
     setCheckedCount(newCheckedCount);
     const newProgressValue = Math.round(
       (newCheckedCount / videos.length) * 100,
     );
     setProgressValue(newProgressValue);
-
-    try {
-      if (session && data) {
-        const response = await fetch(
-          `${process.env.NEXTAUTH_URL}/api/progress/update`,
-          {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              userEmail: session?.user?.email,
-              courseId: data?.course1?.id,
-              subject: data?.title,
-              lessons: getInputStatus(),
-            }),
-          },
-        );
-        const progress = await response.json();
-      }
-    } catch (err) {}
     setIsLoading(false);
   };
 
@@ -118,12 +127,16 @@ export default function Videos({ subject }) {
         <div className="w-full self-end sm:w-1/3  ">
           <div className="flex flex-row-reverse items-center justify-around p-2">
             <h2 className="pr-4 text-right text-xl tracking-wider">وانەکان</h2>
-            <div
-              className="radial-progress"
-              style={{ "--value": `${progressValue}` }}
-            >
-              {progressValue}%
-            </div>
+            {isLoading ? (
+              <Spinner />
+            ) : (
+              <div
+                className="radial-progress"
+                style={{ "--value": `${progressValue}` }}
+              >
+                {progressValue}%
+              </div>
+            )}
           </div>
 
           <div className="m-2 flex h-96 w-full flex-col overflow-y-auto  p-4  text-right ">
