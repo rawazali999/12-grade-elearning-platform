@@ -6,6 +6,7 @@ import Videos from "../../components/Videos";
 import getSubject from "@/lib/getSubject";
 export default async function page({ params: { subject } }) {
   const data = await getSubject(subject);
+
   return (
     <Layout>
       <section className=" h-full w-full ">

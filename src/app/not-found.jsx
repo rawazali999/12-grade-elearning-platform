@@ -4,9 +4,9 @@ import Layout from "@components/Layout";
 export default function NotFound() {
   return (
     <Layout>
-      <div className="flex h-screen w-full items-center justify-center bg-white p-5">
-        <div className="text-center">
-          <div className="inline-flex rounded-full bg-yellow-100 p-4">
+      <div className="flex h-screen w-full items-center justify-center bg-white p-5 dark:bg-slate-900">
+        <div className="text-center text-gray-800 dark:text-gray-100">
+          <div className="inline-flex rounded-full bg-yellow-100 p-4 ">
             <div className="rounded-full bg-yellow-200 stroke-yellow-600 p-4">
               <svg
                 className="h-16 w-16"
@@ -23,17 +23,14 @@ export default function NotFound() {
               </svg>
             </div>
           </div>
-          <h1 className="mt-5 text-[36px] font-bold text-slate-800 lg:text-[50px]">
+          <h1 className="mt-5 text-[36px] font-bold  lg:text-[50px]">
             404 - Page not found
           </h1>
-          <p className="my-5 text-slate-600 lg:text-lg">
+          <p className="my-5  lg:text-lg">
             The page you are looking for does not exist or <br />
             has been removed.
           </p>
-          <Link
-            href="/"
-            className="rounded-md bg-warning p-2 font-semibold text-white"
-          >
+          <Link href="/" className="rounded-md bg-warning p-2 font-semibold ">
             Return Home
           </Link>
         </div>

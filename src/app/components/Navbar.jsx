@@ -9,9 +9,13 @@ import ThemeToggle from "./theme/ThemeToggle";
 import { TbLogout } from "react-icons/tb";
 import { IoMdSchool } from "react-icons/io";
 import { AiOutlineCloseCircle, AiOutlineHome } from "react-icons/ai";
+import { redirect } from "next/navigation";
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-
+  const handleSignOut = () => {
+    signOut();
+    redirect("/login");
+  };
   return (
     <>
       {/* navbar */}
@@ -134,9 +138,7 @@ export default function Navbar() {
           <div className="my-auto">
             <button
               className=" mb-3 flex w-full items-center justify-center gap-2 rounded   border-2 border-gray-900 px-4 py-2 text-center  text-lg leading-loose hover:bg-cyan-900  hover:text-gray-100 dark:border-gray-100 "
-              onClick={() => {
-                signOut();
-              }}
+              onClick={handleSignOut}
             >
               Sign out
               <TbLogout />

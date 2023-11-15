@@ -5,7 +5,6 @@ import { AiOutlineYoutube } from "react-icons/ai";
 import { useSession } from "next-auth/react";
 import getOrCreateProgress from "@/lib/getOrCreateProgress";
 import Spinner from "@components/Spinner";
-import { set } from "mongoose";
 
 export default function Videos({ subject }) {
   const [videos, setVideos] = useState([]);
