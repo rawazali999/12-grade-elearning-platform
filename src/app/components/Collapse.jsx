@@ -4,9 +4,9 @@ export default function Collapse({ title, content }) {
   return (
     <div
       tabIndex={0}
-      className="collapse-arrow  collapse  w-2/3  border-2 text-slate-900 dark:text-slate-50 "
+      className="collapse  collapse-arrow  w-2/3  border-2 text-slate-900 dark:text-slate-50 "
     >
-      <div className="collapse-title text-right text-xl  font-medium">
+      <div className="text-md collapse-title text-right font-medium  sm:text-xl">
         {title}
       </div>
       <div className="collapse-content text-right">

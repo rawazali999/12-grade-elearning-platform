@@ -3,7 +3,7 @@ import { Schema, models } from "mongoose";
 
 const progressSchema = new Schema(
   {
-    userEmail: { type: String, required: true, unique: true },
+    userEmail: { type: String, required: true },
     subject: { type: String, required: true },
     courseId: { type: String, required: true },
     lessons: [
@@ -17,6 +17,7 @@ const progressSchema = new Schema(
   },
   { timestamps: true },
 );
+progressSchema.index({ userEmail: 1, subject: 1 }, { unique: true });
 
 const Progress = models.Progress || mongoose.model("Progress", progressSchema);
 

@@ -10,7 +10,9 @@ import { TbLogout } from "react-icons/tb";
 import { IoMdSchool } from "react-icons/io";
 import { AiOutlineCloseCircle, AiOutlineHome } from "react-icons/ai";
 import { redirect } from "next/navigation";
+import { useSession } from "next-auth/react";
 export default function Navbar() {
+  const { data: session } = useSession();
   const [menuOpen, setMenuOpen] = useState(false);
   const handleSignOut = () => {
     signOut();
@@ -22,7 +24,7 @@ export default function Navbar() {
       <nav className="flex items-center justify-between bg-cyan-900 p-3 text-white ">
         {/* Logo */}
         <Link
-          className="text-md flex items-center gap-2 font-semibold  text-white "
+          className="sm:text-md flex items-center gap-2 text-sm font-semibold  text-white "
           href="/"
         >
           <IoMdSchool className="text-5xl text-white" />
@@ -68,8 +70,39 @@ export default function Navbar() {
 
         <div className="flex">
           <ThemeToggle />
+          <div className="dropdown dropdown-end hidden md:block">
+            <div tabIndex={0} class="avatar placeholder cursor-pointer">
+              <div class=" w-8 rounded-full bg-black text-neutral-content">
+                <span class="text-sm font-medium text-white">
+                  {
+                    // return first letter of the first and last name
+                    session?.user?.name
+                      ?.split(" ")
+                      .map((name) => name[0])
+                      .join("")
+                  }
+                </span>
+              </div>
+            </div>
+            <div
+              tabIndex={0}
+              className="menu dropdown-content rounded-box z-[1] w-52 bg-base-100 p-2 shadow"
+            >
+              <div className="flex flex-col items-center justify-center">
+                <UserInfo />
+                <button
+                  className="text-md  flex items-center justify-center gap-2 rounded border border-gray-900 px-2 py-1  text-center leading-loose hover:bg-cyan-900  hover:text-gray-100 dark:border-gray-100 "
+                  onClick={handleSignOut}
+                >
+                  Sign out
+                  <TbLogout />
+                </button>
+              </div>
+            </div>
+          </div>
+
           <button
-            className="navbar-burger flex items-center p-3 text-lg text-white"
+            className="navbar-burger flex items-center p-3 text-lg text-white md:hidden"
             onClick={() => setMenuOpen(true)}
           >
             <RxHamburgerMenu />

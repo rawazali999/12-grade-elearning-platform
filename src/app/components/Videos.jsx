@@ -38,9 +38,6 @@ export default function Videos({ subject }) {
       setVideos(subjectData.course1.lessons);
     }
     getData();
-  }, [subject]);
-
-  useEffect(() => {
     async function getVideos() {
       const progress = await getOrCreateProgress(
         session?.user?.email,
@@ -62,7 +59,7 @@ export default function Videos({ subject }) {
       setIsLoading(false);
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [session, data]);
+  }, [session]);
 
   const handleProgress = async (e) => {
     const videoId = e.target.id;
@@ -103,7 +100,7 @@ export default function Videos({ subject }) {
   };
 
   return (
-    <div className="flex  w-full flex-col  p-4">
+    <div className="flex  w-full flex-col p-4 text-gray-900 dark:text-gray-100">
       <div className="my-4 flex flex-col self-center text-center text-2xl">
         <h2>
           <AiOutlineYoutube className="inline-block text-2xl" />
@@ -112,7 +109,7 @@ export default function Videos({ subject }) {
         <span>{data?.course1?.kurdish_title}</span>
       </div>
 
-      <div className="flex w-full flex-col rounded-lg border  p-6 sm:flex-row">
+      <div className="flex w-full flex-col rounded-lg border-2 p-6  shadow-lg sm:flex-row">
         <div className="my-6 w-full sm:w-2/3">
           <iframe
             className="h-52 rounded-lg shadow-md sm:h-[400px]"

@@ -25,7 +25,7 @@ const subjects = [
   {
     id: 4,
     title: "Sunrise 12",
-    original_title: " Sunrise 12 student's book",
+    original_title: " Sunrise 12 ",
     route: "sunrise12",
     imageUrl: "sunrise12.jpg",
   },
