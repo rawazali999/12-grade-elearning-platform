@@ -13,11 +13,11 @@ export default function Subjects() {
   }, []);
   return (
     <>
-      <h1 className="m-2 text-center text-3xl font-bold tracking-wider dark:text-gray-100">
+      <h1 className="m-2 text-center text-3xl font-bold tracking-wider ">
         Subjects
       </h1>
       <div
-        className="m-2 flex flex-wrap justify-center dark:text-gray-100"
+        className="m-2 flex flex-wrap justify-center "
         id="subjects"
       >
         {subjects.map((subject) => (

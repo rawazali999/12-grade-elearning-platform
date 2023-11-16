@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <ThemeProvider>
-        <body className="bg-slate-50 dark:bg-slate-900">
+        <body className="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-gray-100">
           <AuthProvider>{children}</AuthProvider>
           {/* <DriftChatbot /> */}
           {/* <Chatbot /> */}

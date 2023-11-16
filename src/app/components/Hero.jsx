@@ -7,7 +7,7 @@ export default function Hero() {
       <div className="mb-10 w-full sm:w-1/2">
         <div className="container mx-auto h-full sm:p-10">
           <header className="container mt-10 h-full items-center px-4 lg:mt-0 lg:flex">
-            <div className="w-full text-slate-900 dark:text-white">
+            <div className="w-full">
               <h1 className="text-3xl font-bold  lg:text-5xl ">
                 Welcome to 12 Grade E-Learning Platform
               </h1>

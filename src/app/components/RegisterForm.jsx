@@ -85,19 +85,19 @@ export default function RegisterForm() {
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-3">
             <input
-              className=" w-72 rounded-md  border border-gray-300 p-2  focus:outline-cyan-700 dark:bg-slate-200"
+              className=" w-72 rounded-md  border border-gray-300 bg-slate-100  p-2 placeholder-gray-500 focus:outline-cyan-700"
               onChange={(e) => setName(e.target.value)}
               type="text"
               placeholder="Username"
             />
             <input
-              className=" w-72 rounded-md  border border-gray-300 p-2  focus:outline-cyan-700 dark:bg-slate-200"
+              className=" w-72 rounded-md  border border-gray-300 bg-slate-100  p-2 placeholder-gray-500 focus:outline-cyan-700"
               onChange={(e) => setEmail(e.target.value)}
               type="email"
               placeholder="Email"
             />
             <input
-              className=" w-72 rounded-md  border border-gray-300 p-2  focus:outline-cyan-700 dark:bg-slate-200"
+              className=" w-72 rounded-md  border border-gray-300 bg-slate-100  p-2 placeholder-gray-500 focus:outline-cyan-700"
               onChange={(e) => setPassword(e.target.value)}
               type="password"
               placeholder="Password"

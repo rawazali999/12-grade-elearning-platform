@@ -44,20 +44,20 @@ export default function LoginForm() {
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-3">
             <input
-              className=" w-72 rounded-md border border-gray-300 p-2  focus:outline-cyan-600 dark:bg-slate-200"
+              className=" w-72 rounded-md border border-gray-300 bg-slate-100  p-2 placeholder-gray-500 focus:outline-cyan-600 "
               onChange={(e) => setEmail(e.target.value)}
               type="email"
               placeholder="Email"
               autoComplete="email"
             />
             <input
-              className=" w-72 rounded-md border border-gray-300 p-2  focus:outline-cyan-600 dark:bg-slate-200"
+              className=" w-72 rounded-md border border-gray-300 bg-slate-100  p-2 placeholder-gray-500 focus:outline-cyan-600 "
               onChange={(e) => setPassword(e.target.value)}
               type="password"
               placeholder="Password"
             />
             <button className="cursor-pointer rounded-md bg-cyan-700 px-6 py-2 font-bold text-white">
-              Login
+              Log in
             </button>
             {error && (
               <div className="mt-2 w-fit rounded-md bg-red-500 px-3 py-1 text-sm text-white">

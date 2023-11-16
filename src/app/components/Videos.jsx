@@ -16,19 +16,19 @@ export default function Videos({ subject }) {
 
   const { data: session } = useSession();
 
-  const getInputStatus = () => {
-    const inputs = document.querySelectorAll(".checkbox");
-    const inputsArr = Array.from(inputs);
-    const inputsStatus = inputsArr.map((input) => {
-      return {
-        id: input.id,
-        title: input.nextSibling.textContent,
-        src: input.videosrc,
-        checked: input.checked,
-      };
-    });
-    return inputsStatus;
-  };
+  // const getInputStatus = () => {
+  //   const inputs = document.querySelectorAll(".checkbox");
+  //   const inputsArr = Array.from(inputs);
+  //   const inputsStatus = inputsArr.map((input) => {
+  //     return {
+  //       id: input.id,
+  //       title: input.nextSibling.textContent,
+  //       src: input.videosrc,
+  //       checked: input.checked,
+  //     };
+  //   });
+  //   return inputsStatus;
+  // };
 
   useEffect(() => {
     async function getData() {
@@ -62,14 +62,14 @@ export default function Videos({ subject }) {
   }, [session]);
 
   const handleProgress = async (e) => {
-    const videoId = e.target.id;
-    const isChecked = e.target.checked;
+    const id = e.target.id;
+    const checked = e.target.checked;
 
     // Optimistically update the state to avoid waiting for the server response
     // that make the input state to be updated immediately
     setVideos((prevVideos) =>
       prevVideos.map((video) =>
-        video.id === videoId ? { ...video, checked: isChecked } : video,
+        video.id === id ? { ...video, checked: checked } : video,
       ),
     );
     setIsLoading(true);
@@ -85,7 +85,7 @@ export default function Videos({ subject }) {
             userEmail: session?.user?.email,
             courseId: data?.course1?.id,
             subject: data?.title,
-            lessons: getInputStatus(),
+            lesson: {id, checked},
           }),
         });
       }

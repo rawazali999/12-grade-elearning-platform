@@ -11,6 +11,8 @@ import { IoMdSchool } from "react-icons/io";
 import { AiOutlineCloseCircle, AiOutlineHome } from "react-icons/ai";
 import { redirect } from "next/navigation";
 import { useSession } from "next-auth/react";
+import { MdNotificationsNone } from "react-icons/md";
+import { IoMdNotificationsOutline } from "react-icons/io";
 export default function Navbar() {
   const { data: session } = useSession();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -68,12 +70,16 @@ export default function Navbar() {
           </li>
         </ul>
 
-        <div className="flex">
+        <div className="flex items-center justify-center gap-3 ">
           <ThemeToggle />
+          <Link href={"/notifications"}>
+            <IoMdNotificationsOutline className="cursor-pointer text-2xl" />
+          </Link>
+
           <div className="dropdown dropdown-end hidden md:block">
-            <div tabIndex={0} class="avatar placeholder cursor-pointer">
-              <div class=" w-8 rounded-full bg-black text-neutral-content">
-                <span class="text-sm font-medium text-white">
+            <div tabIndex={0} className="avatar placeholder cursor-pointer">
+              <div className=" w-8 rounded-full bg-black text-neutral-content">
+                <span className="text-sm font-medium text-white">
                   {
                     // return first letter of the first and last name
                     session?.user?.name

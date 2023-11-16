@@ -13,14 +13,14 @@ const ThemeToggle = () => {
       {theme === "dark" ? (
         <button
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          className=" mx-1  cursor-pointer px-2 text-white  shadow-none"
+          className=" mx-1  cursor-pointer  text-white  shadow-none"
         >
           <ImSun className="text-lg" />
         </button>
       ) : (
         <button
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          className="mx-1 cursor-pointer px-2  text-white  outline-none"
+          className="mx-1 cursor-pointer   text-white  outline-none"
           area-label="moon"
         >
           <BsMoonStars className="text-lg" />

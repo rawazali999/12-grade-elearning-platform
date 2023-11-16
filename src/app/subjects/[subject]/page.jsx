@@ -10,7 +10,7 @@ export default async function page({ params: { subject } }) {
   return (
     <Layout>
       <section className=" h-full w-full ">
-        <div className="flex h-full w-full flex-col  pt-4 text-gray-900 dark:text-slate-50 sm:flex-row sm:justify-between">
+        <div className="flex h-full w-full flex-col  pt-4 sm:flex-row sm:justify-between">
           <div className="  w-full px-4 sm:w-1/4">
             <Image
               src={`/images/lessons/${data?.imageUrl}`}
@@ -26,7 +26,7 @@ export default async function page({ params: { subject } }) {
               {" "}
               <a
                 target="_blank"
-                className="rounded border-2  p-2  font-bold  dark:text-slate-100 "
+                className="rounded border-2  p-2  font-bold "
                 href={data?.book}
               >
                 <AiOutlineFilePdf className="inline-block text-2xl" />
