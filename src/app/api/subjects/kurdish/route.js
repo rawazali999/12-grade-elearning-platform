@@ -4,7 +4,7 @@ export async function GET() {
   const kurdish = {
     id: 1,
     title: "kurdish",
-    kurdish_title: "زمان و ئەدەبی کوردی",
+    original_title: "زمان و ئەدەبی کوردی",
     imageUrl: "kurdish.jpg",
     book: "https://drive.google.com/file/d/10uVFOkUN5ANtRyW1uyBhOBI0EtYEnDvQ/view",
     course1: {

@@ -1,14 +1,14 @@
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  const scientificMath = {
-    id: 5,
-    title: "scientific-math",
-    original_title: " بیرکاری بۆ هەموان - زانستی ",
-    imageUrl: "scientific_math.jpg",
+  const arabicPart1 = {
+    id: 2,
+    title: "arabic-part1",
+    original_title: "كتاب اللغة العربية  الجزء الأول",
+    imageUrl: "arabic_part1.jpg",
     book: "https://drive.google.com/file/d/1Z7XCRXeh6CGT2z8BeuMDUCptQA7fcS7z/view",
     course1: {
-      id: 12345,
+      id:12345,
       kurdish_title: "بیرکاری پۆلی12ی زانستی | م. وەرزێر حەسەن (هەرێم) ",
       lessons: [
         {
@@ -39,5 +39,5 @@ export async function GET() {
     },
   };
 
-  return NextResponse.json(scientificMath);
+  return NextResponse.json(arabicPart1);
 }

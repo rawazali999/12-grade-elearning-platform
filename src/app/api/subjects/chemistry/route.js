@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  const scientificMath = {
-    id: 5,
-    title: "scientific-math",
-    original_title: " بیرکاری بۆ هەموان - زانستی ",
-    imageUrl: "scientific_math.jpg",
+  const chemistry = {
+    id: 8,
+    title: "chemistry",
+    original_title: "زانست بۆ هەمووان - کیمیا",
+    imageUrl: "chemistry.jpg",
     book: "https://drive.google.com/file/d/1Z7XCRXeh6CGT2z8BeuMDUCptQA7fcS7z/view",
     course1: {
       id: 12345,
@@ -39,5 +39,5 @@ export async function GET() {
     },
   };
 
-  return NextResponse.json(scientificMath);
+  return NextResponse.json(chemistry);
 }

@@ -5,7 +5,7 @@ const progressSchema = new Schema(
   {
     userEmail: { type: String, required: true },
     subject: { type: String, required: true },
-    courseId: { type: String, required: true },
+    id: { type: Number, required: true },
     lessons: [
       {
         id: { type: String, required: true },

@@ -12,14 +12,14 @@ const subjects = [
     id: 2,
     title: "Arabic Part 1",
     original_title: "  كتاب اللغة العربية  الجزء الأول",
-    route: "arabic_part1",
+    route: "arabic-part1",
     imageUrl: "arabic_part1.jpg",
   },
   {
     id: 3,
     title: "Arabic Part 2",
     original_title: "  كتاب اللغة العربية  الجزء الثاني",
-    route: "arabic_part2",
+    route: "arabic-part2",
     imageUrl: "arabic_part2.jpg",
   },
   {
@@ -69,7 +69,7 @@ const subjects = [
   {
     id: 10,
     title: "Economic geography",
-    original_title: " جوگرافیای ئێکۆنۆمی",
+    original_title: " جوگرافیای ئابووری",
     route: "economic-geography",
     imageUrl: "economic_geography.jpg",
   },

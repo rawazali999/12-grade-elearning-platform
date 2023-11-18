@@ -1,65 +1,55 @@
 "use client";
-import getSubject from "@/lib/getSubject";
 import React, { useEffect, useState } from "react";
 import { AiOutlineYoutube } from "react-icons/ai";
 import { useSession } from "next-auth/react";
 import getOrCreateProgress from "@/lib/getOrCreateProgress";
 import Spinner from "@components/Spinner";
 
-export default function Videos({ subject }) {
-  const [videos, setVideos] = useState([]);
-  const [currentVideo, setCurrentVideo] = useState();
+export default function Videos({ subject, course }) {
+  const [lessons, setLessons] = useState([]);
+  const [currentLesson, setCurrentLesson] = useState();
   const [checkedCount, setCheckedCount] = useState(0);
-  const [data, setData] = useState();
   const [progressValue, setProgressValue] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const { data: session } = useSession();
-
-  // const getInputStatus = () => {
-  //   const inputs = document.querySelectorAll(".checkbox");
-  //   const inputsArr = Array.from(inputs);
-  //   const inputsStatus = inputsArr.map((input) => {
-  //     return {
-  //       id: input.id,
-  //       title: input.nextSibling.textContent,
-  //       src: input.videosrc,
-  //       checked: input.checked,
-  //     };
-  //   });
-  //   return inputsStatus;
-  // };
+  useEffect(() => {
+    setLessons(course.lessons);
+    console.log("hahahhahaha" + lessons);
+    setCurrentLesson(course.lessons[0].src);
+  }, []);
 
   useEffect(() => {
-    async function getData() {
-      const subjectData = await getSubject(subject);
-      setData(subjectData);
-      setCurrentVideo(subjectData.course1.lessons[0].src);
-      setVideos(subjectData.course1.lessons);
+    if (lessons.length > 0) {
+      async function getVideos() {
+        const progress = await getOrCreateProgress(
+          session?.user?.email,
+          course?.id,
+          subject?.title,
+          lessons,
+        );
+        setLessons(progress);
+
+        const newCheckedCount = progress.filter(
+          (lesson) => lesson.checked,
+        ).length;
+        setCheckedCount(newCheckedCount);
+        if (lessons.length > 0) {
+          setProgressValue(
+            Math.round((newCheckedCount / lessons.length) * 100),
+          );
+        } else {
+          setProgressValue(0);
+        }
+        setIsLoading(false);
+      }
+
+      getVideos();
     }
-    getData();
-    async function getVideos() {
-      const progress = await getOrCreateProgress(
-        session?.user?.email,
-        data?.course1?.id,
-        data?.title,
-        videos,
-      );
-      setVideos(progress);
-      const newCheckedCount = progress.filter(
-        (lesson) => lesson.checked,
-      ).length;
-      setCheckedCount(newCheckedCount);
-      setProgressValue(Math.round((newCheckedCount / videos.length) * 100));
-    }
-    // Call getVideos and wait for it to finish
-    (async () => {
-      setIsLoading(true);
-      await getVideos();
-      setIsLoading(false);
-    })();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [session]);
+    // without these dependencies, the useEffect will not create a new progress or get the progress
+  }, [session, subject, course]);
 
   const handleProgress = async (e) => {
     const id = e.target.id;
@@ -67,15 +57,14 @@ export default function Videos({ subject }) {
 
     // Optimistically update the state to avoid waiting for the server response
     // that make the input state to be updated immediately
-    setVideos((prevVideos) =>
-      prevVideos.map((video) =>
-        video.id === id ? { ...video, checked: checked } : video,
+    setLessons((prevVideos) =>
+      prevVideos.map((lesson) =>
+        lesson.id === id ? { ...lesson, checked: checked } : lesson,
       ),
     );
     setIsLoading(true);
-
     try {
-      if (session && data) {
+      if (session && subject) {
         await fetch(`${process.env.NEXTAUTH_URL}/api/progress/update`, {
           method: "PUT",
           headers: {
@@ -83,9 +72,9 @@ export default function Videos({ subject }) {
           },
           body: JSON.stringify({
             userEmail: session?.user?.email,
-            courseId: data?.course1?.id,
-            subject: data?.title,
-            lesson: {id, checked},
+            id: course?.id,
+            subject: subject?.title,
+            lesson: { id, checked },
           }),
         });
       }
@@ -93,7 +82,7 @@ export default function Videos({ subject }) {
     const newCheckedCount = checkedCount + (e.target.checked ? 1 : -1);
     setCheckedCount(newCheckedCount);
     const newProgressValue = Math.round(
-      (newCheckedCount / videos.length) * 100,
+      (newCheckedCount / lessons.length) * 100,
     );
     setProgressValue(newProgressValue);
     setIsLoading(false);
@@ -104,9 +93,9 @@ export default function Videos({ subject }) {
       <div className="my-4 flex flex-col self-center text-center text-2xl">
         <h2>
           <AiOutlineYoutube className="inline-block text-2xl" />
-          {data?.kurdish_title}
+          {subject?.kurdish_title}
         </h2>
-        <span>{data?.course1?.kurdish_title}</span>
+        <span>{subject?.course1?.kurdish_title}</span>
       </div>
 
       <div className="flex w-full flex-col rounded-lg border-2 p-6  shadow-lg sm:flex-row">
@@ -115,7 +104,7 @@ export default function Videos({ subject }) {
             className="h-52 rounded-lg shadow-md sm:h-[400px]"
             width="100%"
             height="400"
-            src={currentVideo}
+            src={currentLesson}
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           ></iframe>
@@ -136,30 +125,28 @@ export default function Videos({ subject }) {
           </div>
 
           <div className="m-2 flex h-96 w-full flex-col overflow-y-auto  p-4  text-right ">
-            {videos.map((video) => (
+            {lessons.map((lesson) => (
               <div
-                key={video.id}
+                key={lesson.id}
                 className={"flex w-full   justify-between  border px-4 py-3"}
               >
                 <input
-                  id={video.id}
-                  // my-video is a custom attribute
-                  videosrc={video.src}
+                  id={lesson.id}
                   onChange={handleProgress}
-                  checked={video.checked}
+                  checked={lesson.checked}
                   type="checkbox"
                   className="checkbox"
                 />
 
                 <p
                   className={`  cursor-pointer ${
-                    currentVideo === video.src
+                    currentLesson === lesson.src
                       ? "text-black dark:text-white"
-                      : ""
+                      : "text-gray-600 dark:text-gray-400"
                   }`}
-                  onClick={() => setCurrentVideo(video.src)}
+                  onClick={() => setCurrentLesson(lesson.src)}
                 >
-                  {video.title}
+                  {lesson.title}
                 </p>
               </div>
             ))}
