@@ -1,9 +1,10 @@
 "use client";
 import React from "react";
-import Card from "./Card";
+import Layout from "@components/Layout";
+import Card from "@components/Card";
 import { useState, useEffect } from "react";
 
-export default function Subjects() {
+export default function QuizzesPage() {
   const [subjects, setSubjects] = useState([]);
   useEffect(() => {
     fetch("/api/subjects")
@@ -12,24 +13,21 @@ export default function Subjects() {
       .catch((error) => console.error("Error:", error));
   }, []);
   return (
-    <>
+    <Layout>
       <h1 className="m-2 text-center text-3xl font-bold tracking-wider ">
-        Subjects
+        Quizzes
       </h1>
-      <div
-        className="kurdish-font m-2 flex flex-wrap justify-center "
-        id="subjects"
-      >
+      <div className="m-2 flex flex-wrap justify-center " id="quizzes">
         {subjects.map((subject) => (
           <Card
             key={subject.id}
             title={subject.original_title}
             imageUrl={subject.imageUrl}
             route={subject.route}
-            section="subjects"
+            section={"quizzes"}
           />
         ))}
       </div>
-    </>
+    </Layout>
   );
 }

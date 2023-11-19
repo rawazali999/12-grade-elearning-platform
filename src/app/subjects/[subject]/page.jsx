@@ -4,12 +4,14 @@ import Image from "next/image";
 import { AiOutlineFilePdf } from "react-icons/ai";
 import Videos from "../../components/Videos";
 import getSubject from "@/lib/getSubject";
-export default async function page({ params: { subject } }) {
+export default async function page({ params }) {
+  const { subject } = params;
   const data = await getSubject(subject);
+  // console.log(data);
 
   return (
     <Layout>
-      <section className=" h-full w-full ">
+      <section className=" kurdish-font h-full w-full ">
         <div className="flex h-full w-full flex-col  pt-4 sm:flex-row sm:justify-between">
           <div className="  w-full px-4 sm:w-1/4">
             <Image
@@ -36,8 +38,18 @@ export default async function page({ params: { subject } }) {
             <hr />
           </div>
         </div>
-        <Videos subject={data} course={data.course1} />
+        <Videos subject={data} course={data?.course1} />
       </section>
     </Layout>
   );
+}
+
+export async function generateStaticParams() {
+  const subjects = await fetch(`${process.env.BASE_URL}/api/subjects`)
+    .then((res) => res.json())
+    .catch((error) => console.error(`Error: ${error}`));
+
+  return subjects.map((subject) => ({
+    subject: subject?.subject,
+  }));
 }

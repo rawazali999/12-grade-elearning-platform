@@ -94,7 +94,7 @@ export const CommonQuestions = () => {
   return (
     <div>
       <h1 className="my-4 text-center text-2xl ">Common Questions</h1>
-      <div className="flex flex-col items-center gap-2 p-2">
+      <div className="kurdish-font flex flex-col items-center gap-2 p-2">
         {questions.map((question) => (
           <Collapse
             key={question.id}

@@ -1,14 +1,17 @@
 import { NextResponse } from "next/server";
 import { connectMongoDB } from "@lib/mongodb";
 import Progress from "@models/progress";
-
+let db;
 export async function PUT(req) {
-  await connectMongoDB();
+  if (!db) {
+    db = await connectMongoDB();
+    console.log(db);
+  }
   const { userEmail, id, subject, lesson } = await req.json();
   // console.log("Request body:", userEmail, id, subject, lesson);
   const progress = await Progress.findOne({ userEmail, id, subject });
   // console.log("Progress found for update:", progress);
-  const lessonIndex = progress.lessons.findIndex((l) => l.id === lesson.id);
+  const lessonIndex = progress.lessons.findIndex((l) => l.id == lesson.id);
   console.log("Lesson index:", lessonIndex);
 
   await Progress.updateOne(

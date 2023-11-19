@@ -2,16 +2,17 @@
 import Link from "next/link";
 import React from "react";
 import { useState } from "react";
-import { RxHamburgerMenu } from "react-icons/rx";
 import { signOut } from "next-auth/react";
 import UserInfo from "./UserInfo";
 import ThemeToggle from "./theme/ThemeToggle";
+import { redirect } from "next/navigation";
+import { useSession } from "next-auth/react";
+
+import { RxHamburgerMenu } from "react-icons/rx";
 import { TbLogout } from "react-icons/tb";
 import { IoMdSchool } from "react-icons/io";
 import { AiOutlineCloseCircle, AiOutlineHome } from "react-icons/ai";
-import { redirect } from "next/navigation";
-import { useSession } from "next-auth/react";
-import { MdNotificationsNone } from "react-icons/md";
+import { MdQuestionMark } from "react-icons/md";
 import { IoMdNotificationsOutline } from "react-icons/io";
 export default function Navbar() {
   const { data: session } = useSession();
@@ -23,7 +24,7 @@ export default function Navbar() {
   return (
     <>
       {/* navbar */}
-      <nav className="flex items-center justify-between bg-cyan-900 p-3 text-white ">
+      <nav className="english flex items-center justify-between bg-cyan-900 p-3 text-white">
         {/* Logo */}
         <Link
           className="sm:text-md flex items-center gap-2 text-sm font-semibold  text-white "
@@ -46,7 +47,7 @@ export default function Navbar() {
           <li className="mb-1">
             <Link
               className=" rounded px-4 py-2 text-sm font-semibold text-gray-100 hover:bg-gray-100 hover:text-cyan-900"
-              href="#"
+              href="/quizzes"
             >
               Quizzes
             </Link>
@@ -149,9 +150,10 @@ export default function Navbar() {
               </li>
               <li className="mb-1">
                 <Link
-                  className="block rounded p-3 text-sm font-semibold  hover:bg-cyan-900 hover:text-gray-100"
-                  href="#"
+                  className="text-md flex gap-2 rounded p-3 font-semibold  hover:bg-cyan-900 hover:text-gray-100"
+                  href="/quizzes"
                 >
+                  <MdQuestionMark />
                   Quizzes
                 </Link>
               </li>

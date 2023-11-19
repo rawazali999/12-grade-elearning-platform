@@ -11,13 +11,13 @@ export default function Videos({ subject, course }) {
   const [checkedCount, setCheckedCount] = useState(0);
   const [progressValue, setProgressValue] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-
   const { data: session } = useSession();
   useEffect(() => {
-    setLessons(course.lessons);
-    console.log("hahahhahaha" + lessons);
-    setCurrentLesson(course.lessons[0].src);
-  }, []);
+    if (course) {
+      setLessons(course.lessons);
+      setCurrentLesson(course.lessons[0].src);
+    }
+  }, [course]);
 
   useEffect(() => {
     if (lessons.length > 0) {
@@ -34,13 +34,9 @@ export default function Videos({ subject, course }) {
           (lesson) => lesson.checked,
         ).length;
         setCheckedCount(newCheckedCount);
-        if (lessons.length > 0) {
-          setProgressValue(
-            Math.round((newCheckedCount / lessons.length) * 100),
-          );
-        } else {
-          setProgressValue(0);
-        }
+
+        setProgressValue(Math.round((newCheckedCount / lessons.length) * 100));
+
         setIsLoading(false);
       }
 
@@ -62,6 +58,12 @@ export default function Videos({ subject, course }) {
         lesson.id === id ? { ...lesson, checked: checked } : lesson,
       ),
     );
+    const newCheckedCount = checkedCount + (e.target.checked ? 1 : -1);
+    setCheckedCount(newCheckedCount);
+    const newProgressValue = Math.round(
+      (newCheckedCount / lessons.length) * 100,
+    );
+    setProgressValue(newProgressValue);
     setIsLoading(true);
     try {
       if (session && subject) {
@@ -79,12 +81,7 @@ export default function Videos({ subject, course }) {
         });
       }
     } catch (err) {}
-    const newCheckedCount = checkedCount + (e.target.checked ? 1 : -1);
-    setCheckedCount(newCheckedCount);
-    const newProgressValue = Math.round(
-      (newCheckedCount / lessons.length) * 100,
-    );
-    setProgressValue(newProgressValue);
+
     setIsLoading(false);
   };
 

@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Tilt_Neon";
+  font-family: "kurdish";
   src: url("/fonts/Peshang_Des_1_bold_.ttf");
 }
 
-* {
-  font-family: "Tilt_Neon", sans-serif;
+.kurdish-font {
+  font-family: "kurdish", sans-serif;
 }

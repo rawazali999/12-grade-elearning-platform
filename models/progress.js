@@ -8,7 +8,7 @@ const progressSchema = new Schema(
     id: { type: Number, required: true },
     lessons: [
       {
-        id: { type: String, required: true },
+        id: { type: Number, required: true },
         title: { type: String, required: true },
         src: { type: String, required: true },
         checked: { type: Boolean, default: true },
@@ -17,7 +17,7 @@ const progressSchema = new Schema(
   },
   { timestamps: true },
 );
-progressSchema.index({ userEmail: 1, subject: 1 }, { unique: true });
+progressSchema.index({ userEmail: 1, subject: 1, id: 1 }, { unique: true });
 
 const Progress = models.Progress || mongoose.model("Progress", progressSchema);
 
