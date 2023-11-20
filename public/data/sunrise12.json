@@ -1,0 +1,108 @@
+{
+  "grammar": {
+    "id": "grammar",
+    "numberOfQuestions" : 4,
+    "title": "Grammar",
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is the correct plural form of 'child'?",
+        "choices": ["childs", "children", "childes", "child's"],
+        "correctAnswerIndex": 1
+      },
+      {
+        "id": 2,
+        "question": "Which sentence is grammatically correct?",
+        "choices": [
+          "She don't like pizza.",
+          "She doesn't likes pizza.",
+          "She doesn't like pizza.",
+          "She not like pizza."
+        ],
+        "correctAnswerIndex": 2
+      },
+      {
+        "id": 3,
+        "question": "What is the past tense of 'run'?",
+        "choices": ["ran", "runned", "running", "run"],
+        "correctAnswerIndex": 0
+      },
+      {
+        "id": 4,
+        "question": "Choose the correct form of the verb: 'They _____ to the store.'",
+        "choices": ["go", "goes", "going", "gone"],
+        "correctAnswerIndex": 3
+      }
+    ]
+  },
+  "reading": {
+    "id": "reading",
+    "numberOfQuestions": 4,
+    "title": "Reading ",
+    "questions": [
+      {
+        "id": 1,
+        "passage": "John is a student at the local university. He enjoys studying literature and history.",
+        "question": "What is John's favorite subject?",
+        "choices": ["Math", "Literature", "Science", "History"],
+        "correctAnswerIndex": 1
+      },
+      {
+        "id": 2,
+        "passage": "Mary is planning a trip to Paris. She wants to visit the Eiffel Tower and the Louvre Museum.",
+        "question": "Where does Mary want to visit?",
+        "choices": ["London", "Paris", "New York", "Tokyo"],
+        "correctAnswerIndex": 1
+      },
+      {
+        "id": 3,
+        "passage": "The sun sets in the west. It is a beautiful sight with hues of orange and pink.",
+        "question": "Where does the sun set?",
+        "choices": ["East", "West", "North", "South"],
+        "correctAnswerIndex": 1
+      },
+      {
+        "id": 4,
+        "passage": "Emily enjoys reading mystery novels. She likes to solve puzzles and uncover secrets.",
+        "question": "What genre does Emily enjoy?",
+        "choices": ["Romance", "Mystery", "Fantasy", "Science Fiction"],
+        "correctAnswerIndex": 1
+      }
+    ]
+  },
+  "vocabulary": {
+    "id": "vocabulary",
+    "numberOfQuestions": 4,
+    "title": "Vocabulary",
+    "questions": [
+      {
+        "id": 1,
+        "word": "schedule",
+        "question": "How is 'schedule' pronounced?",
+        "choices": ["/ˈʃɛdjuːl/", "/ˈskɛdjuːl/", "/ˈʃeɪdjuːl/", "/skɛdʒuːl/"],
+        "correctAnswerIndex": 0
+      },
+      {
+        "id": 2,
+        "word": "entrepreneur",
+        "question": "What is the correct vocabulary of 'entrepreneur'?",
+        "choices": ["/ˌɑːnt.rə.prəˈnɜːr/", "/ɑːn.trə.prəˈnɜːr/", "/ɛn.trə.prəˈnɜːr/", "/ˌɑːn.trə.prəˈnʊr/"],
+        "correctAnswerIndex": 0
+      },
+      {
+        "id": 3,
+        "word": "ephemeral",
+        "question": "What does the word 'ephemeral' mean?",
+        "choices": ["Lasting a very short time", "Eternal", "Fragile", "Colorful"],
+        "correctAnswerIndex": 0
+      },
+      {
+        "id": 4,
+        "word": "ubiquitous",
+        "question": "What does the word 'ubiquitous' mean?",
+        "choices": ["Rare", "Present, appearing, or found everywhere", "Hidden", "Noisy"],
+        "correctAnswerIndex": 1
+      }
+    ]
+  }
+}

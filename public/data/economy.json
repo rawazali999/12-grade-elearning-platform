@@ -1,0 +1,96 @@
+{
+    "part1": {
+      "id": "part1",
+      "numberOfQuestions": 4,
+      "title": "Section 1 - Economics",
+      "questions": [
+        {
+          "id": 1,
+          "question": "What is the fundamental economic problem?",
+          "choices": ["Scarcity", "Inflation", "Unemployment", "Monopoly"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 2,
+          "question": "In economics, what does GDP stand for?",
+          "choices": ["Gross Domestic Product", "General Development Plan", "Global Demand Projection", "Government Debt Percentage"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 3,
+          "question": "Which economic system relies on supply and demand with minimal government intervention?",
+          "choices": ["Capitalism", "Socialism", "Communism", "Mixed economy"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 4,
+          "question": "What is the law of demand?",
+          "choices": ["As price increases, quantity demanded increases", "As price increases, quantity demanded decreases", "As price decreases, quantity demanded increases", "As price decreases, quantity demanded decreases"],
+          "correctAnswerIndex": 1
+        }
+      ]
+    },
+    "part2": {
+      "id": "part2",
+      "numberOfQuestions": 4,
+      "title": "Section 2 - Economics",
+      "questions": [
+        {
+          "id": 1,
+          "question": "What is the role of the Federal Reserve in the United States economy?",
+          "choices": ["Fiscal policy", "Monetary policy", "Trade policy", "Environmental policy"],
+          "correctAnswerIndex": 1
+        },
+        {
+          "id": 2,
+          "question": "What is the concept of opportunity cost?",
+          "choices": ["The cost of a good or service", "The cost of the next best alternative", "The cost of production", "The cost of labor"],
+          "correctAnswerIndex": 1
+        },
+        {
+          "id": 3,
+          "question": "In the business cycle, what follows a recession?",
+          "choices": ["Expansion", "Peak", "Trough", "Contraction"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 4,
+          "question": "What is the purpose of fiscal policy?",
+          "choices": ["Control inflation", "Stabilize the economy", "Regulate monetary policy", "Manage exchange rates"],
+          "correctAnswerIndex": 1
+        }
+      ]
+    },
+    "part3": {
+      "id": "part3",
+      "numberOfQuestions": 4,
+      "title": "Section 3 - Economics",
+      "questions": [
+        {
+          "id": 1,
+          "question": "What is the concept of elasticity in economics?",
+          "choices": ["A measure of responsiveness", "A measure of scarcity", "A measure of inflation", "A measure of competition"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 2,
+          "question": "What is the formula for calculating GDP?",
+          "choices": ["GDP = C + I + G + (X - M)", "GDP = C + I + G", "GDP = C + G + (X - M)", "GDP = C + I + (X - M)"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 3,
+          "question": "What is the role of the World Bank in the global economy?",
+          "choices": ["Promote international trade", "Provide financial assistance for development projects", "Regulate global financial markets", "Control monetary policy"],
+          "correctAnswerIndex": 1
+        },
+        {
+          "id": 4,
+          "question": "In microeconomics, what is a perfectly competitive market characterized by?",
+          "choices": ["Few buyers and sellers", "One dominant firm", "Identical products and many buyers and sellers", "Government intervention"],
+          "correctAnswerIndex": 2
+        }
+      ]
+    }
+  }
+  

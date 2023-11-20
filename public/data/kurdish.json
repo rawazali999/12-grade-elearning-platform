@@ -1,0 +1,114 @@
+{
+    "kurdish": {
+      "id": "kurdish",
+      "numberOfQuestions": 5,
+      "title": "Kurdish Language",
+      "questions": [
+        {
+          "id": 1,
+          "question": "له‌ چه‌ند بژێره‌؟",
+          "choices": ["سه‌", "چوار", "پێنج", "شه‌ش"],
+          "correctAnswerIndex": 2
+        },
+        {
+          "id": 2,
+          "question": "په‌یوه‌ندیدنی 'ده‌چه‌' به‌ گرامری چیه‌؟",
+          "choices": ["نوسین", "هێمای هه‌یه‌", "په‌یوه‌ندیدنی خوای گرامر", "بەروار"],
+          "correctAnswerIndex": 1
+        },
+        {
+          "id": 3,
+          "question": "کتێبێک له‌ گه‌وره‌ به‌ زمینه‌ی ناوه‌ندی دا ده‌که‌ینێ، به‌ کوێی؟",
+          "choices": ["نووسین", "زانست", "هونه‌ر", "هه‌مه‌هندی"],
+          "correctAnswerIndex": 2
+        },
+        {
+          "id": 4,
+          "question": "شاعیری کوردی ڕومێئای؟",
+          "choices": ["نعیمى", "مەلا عەکرەم", "خەڵقی", "شەیخ رەشید"],
+          "correctAnswerIndex": 1
+        },
+        {
+          "id": 5,
+          "question": "به‌شی چه‌ند زمانه‌؟",
+          "choices": ["یه‌ک", "دوو", "سێ", "چوار"],
+          "correctAnswerIndex": 2
+        }
+      ]
+    },
+    "literature": {
+      "id": "literature",
+      "numberOfQuestions": 5,
+      "title": "Kurdish Literature",
+      "questions": [
+        {
+          "id": 1,
+          "question": "ئەگەری چوارشەممە چۆن بەرزی کەسێک دیاری بکات ؟",
+          "choices": ["هەرمز", "سەلمان", "هەولێر", "زەوی"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 2,
+          "question": "نووسینەکەی سیروانی چیرۆک بەرگی پڕۆفیسەر؟",
+          "choices": ["ئیسماعیل خۆیی", "ژیان شەیخ موسا", "ئازاد رەنجدەخانی", "شەرۆز"],
+          "correctAnswerIndex": 2
+        },
+        {
+          "id": 3,
+          "question": "ناوەندەکەی چۆن بەرزی پێشەنگ ئاوێنەت ئاکرایە ؟",
+          "choices": ["زین", "هەمزە", "ڕامین", "سلیمان"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 4,
+          "question": "سیروانی ساڵی چەند بە خۆی دیاریکرا ؟",
+          "choices": ["ساڵی 1992", "ساڵی 1998", "ساڵی 2001", "ساڵی 2005"],
+          "correctAnswerIndex": 3
+        },
+        {
+          "id": 5,
+          "question": "ئەگەر بۆچەکە گولەبی سەرت بکات ئەڵاو نیشانەکردنەی چییە؟",
+          "choices": ["ڕۆزەکانی یاسا یانا", "بەڕێوبەری", "هاکارییەکانی ئیمۆشن", "لەسەر خولاندن"],
+          "correctAnswerIndex": 2
+        }
+      ]
+    },
+    "speaking_fluently": {
+      "id": "speaking_fluently",
+      "numberOfQuestions": 5,
+      "title": "Speaking Fluently in Kurdish",
+      "questions": [
+        {
+          "id": 1,
+          "question": "به‌ چه‌ند کاتژمێری زمانی کوردی بناوە؟",
+          "choices": ["36", "40", "42", "45"],
+          "correctAnswerIndex": 1
+        },
+        {
+          "id": 2,
+          "question": "له‌ چه‌ند وڵاتی هه‌ریمه‌ کوردی به‌ کاردێت؟",
+          "choices": ["ھه‌ولێر", "کرماشان", "سلێمانی", "دهۆک"],
+          "correctAnswerIndex": 2
+        },
+        {
+          "id": 3,
+          "question": "ئاڕەزوومەندترین ویلایەتی کۆمارێژی کوردستان؟",
+          "choices": ["هەولێر", "دهۆک", "سلێمانی", "هەرێمە"],
+          "correctAnswerIndex": 3
+        },
+        {
+          "id": 4,
+          "question": "کوردی یه‌کسانی چاک دەکات ڕووداو؟",
+          "choices": ["هەولێر", "دهۆک", "سلێمانی", "هەرێمە"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 5,
+          "question": "لە بڕینی خۆشخۆشی لە ناو چاوپێکە؟",
+          "choices": ["سلام", "خوش", "چاو", "خۆشەویستی"],
+          "correctAnswerIndex": 1
+        }
+      ]
+    }
+  }
+  

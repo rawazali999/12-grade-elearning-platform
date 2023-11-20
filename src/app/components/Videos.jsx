@@ -90,7 +90,7 @@ export default function Videos({ subject, course }) {
       <div className="my-4 flex flex-col self-center text-center text-2xl">
         <h2>
           <AiOutlineYoutube className="inline-block text-2xl" />
-          {subject?.kurdish_title}
+          {subject?.original_title}
         </h2>
         <span>{subject?.course1?.kurdish_title}</span>
       </div>

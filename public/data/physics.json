@@ -1,0 +1,96 @@
+{
+    "part1": {
+      "id": "part1",
+      "numberOfQuestions": 4,
+      "title": "بابەتی یەکەم - فیزیک",
+      "questions": [
+        {
+          "id": 1,
+          "question": "چۆنیشانی گرێمی سەرسامی نەیترۆن چییە؟",
+          "choices": ["9.8 m/s²", "6.67 x 10⁻¹¹ N(m²/kg²)", "3 x 10⁸ m/s", "1.6 x 10⁻¹⁹ C"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 2,
+          "question": "چۆنیشانی قەواندانی ژیرەوە لە ئەرشە چییە؟",
+          "choices": ["۱.۶۷ x ۱۰⁻¹¹ N(m²/kg²)", "۹.۸ m/s²", "۳ x ۱۰⁸ m/s", "۱.۶ x ۱۰⁻¹⁹ C"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 3,
+          "question": "فۆرمولای ڕووداوی سەرسام چییە؟",
+          "choices": ["E = mc²", "F = ma", "P = mv", "W = Fd"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 4,
+          "question": "چۆنیشانی دامەزراندنی دوورەوەی ڕۆشی لە نێوان دوو ڕۆشان چییە؟",
+          "choices": ["F = G(m₁m₂)/r²", "P = F/A", "W = mg", "P = IV"],
+          "correctAnswerIndex": 0
+        }
+      ]
+    },
+    "part2": {
+      "id": "part2",
+      "numberOfQuestions": 4,
+      "title": "بابەتی دووەم - فیزیک",
+      "questions": [
+        {
+          "id": 1,
+          "question": "چۆنیشانی گەولەی ئەرزچاک لە کەسەی خەشیشکراودا چییە؟",
+          "choices": ["Oxygen", "Nitrogen", "Carbon dioxide", "Hydrogen"],
+          "correctAnswerIndex": 2
+        },
+        {
+          "id": 2,
+          "question": "چۆنیشانی سرعەتی ڕووناکەی لە خەراکی بێ جاوا چییە؟",
+          "choices": ["300,000 km/s", "150,000 km/s", "500,000 km/s", "1,000,000 km/s"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 3,
+          "question": "فۆرمولای کەناڕەی کەرناکەی چییە؟",
+          "choices": ["F = ma", "P = mv", "W = Fd", "E = mc^2"],
+          "correctAnswerIndex": 1
+        },
+        {
+          "id": 4,
+          "question": "چۆنیشانی گەولەی ئەرزچاک لە ژیاناکان چییە؟",
+          "choices": ["Elephant", "Blue whale", "Giraffe", "Hippopotamus"],
+          "correctAnswerIndex": 1
+        }
+      ]
+    },
+    "part3": {
+      "id": "part3",
+      "numberOfQuestions": 4,
+      "title": "بابەتی سێیەم - فیزیک",
+      "questions": [
+        {
+          "id": 1,
+          "question": "چۆنیشانی یەکرێتای ئەلیکترۆنی چییە؟",
+          "choices": ["V", "A", "Ω", "W"],
+          "correctAnswerIndex": 1
+        },
+        {
+          "id": 2,
+          "question": "چۆنیشانی فۆرمولای گەورەی کردنەوە چییە؟",
+          "choices": ["F = ma", "P = mv", "W = Fd", "E = mc^2"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 3,
+          "question": "کەسایەتی کەسەی ژیرەوە شووایەتی چینی هەرەکەیان فەرمیولای ژیرەوە لەکاتیان نووسیوتە؟",
+          "choices": ["جالیلۆ گالیلەی", "ئایزاک نیوتن", "ئالبێرت ئاینشتاین", "نیلس بۆر"],
+          "correctAnswerIndex": 1
+        },
+        {
+          "id": 4,
+          "question": "چیاکۆچییە لەسەر شارەزای ەورەمئەی خوێن؟",
+          "choices": ["Transport oxygen", "Fight infections", "Clotting", "Store nutrients"],
+          "correctAnswerIndex": 0
+        }
+      ]
+    }
+  }
+  

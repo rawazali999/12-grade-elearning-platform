@@ -1,0 +1,96 @@
+{
+    "part1": {
+      "id": "part1",
+      "numberOfQuestions": 4,
+      "title": "Section 1 - Biology",
+      "questions": [
+        {
+          "id": 1,
+          "question": "What is the classification of plants in the biological kingdom?",
+          "choices": ["Animalia", "Fungi", "Plantae", "Protista"],
+          "correctAnswerIndex": 2
+        },
+        {
+          "id": 2,
+          "question": "What is the fundamental unit of life in the biological kingdom?",
+          "choices": ["Cells", "Tissues", "Organs", "Organ systems"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 3,
+          "question": "What is the process responsible for the high-yield production of oxygen in plants?",
+          "choices": ["Photosynthesis", "Respiration", "Transpiration", "Reproduction"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 4,
+          "question": "Where are chloroplasts found in a cell?",
+          "choices": ["Mitochondria", "Chloroplasts", "Nucleus", "Endoplasmic reticulum"],
+          "correctAnswerIndex": 1
+        }
+      ]
+    },
+    "part2": {
+      "id": "part2",
+      "numberOfQuestions": 4,
+      "title": "Section 2 - Biology",
+      "questions": [
+        {
+          "id": 1,
+          "question": "Which gas is abundant in the atmosphere and essential for photosynthesis?",
+          "choices": ["Oxygen", "Carbon dioxide", "Nitrogen", "Hydrogen"],
+          "correctAnswerIndex": 1
+        },
+        {
+          "id": 2,
+          "question": "What is the process of converting light energy into chemical energy in plants?",
+          "choices": ["Photosynthesis", "Respiration", "Transpiration", "Reproduction"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 3,
+          "question": "What is the classification of plants in the biological kingdom?",
+          "choices": ["Plantae", "Animalia", "Fungi", "Protista"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 4,
+          "question": "What is the outermost layer in plant cells, providing structural support?",
+          "choices": ["Cell membrane", "Cell wall", "Cytoplasm", "Nucleus"],
+          "correctAnswerIndex": 1
+        }
+      ]
+    },
+    "part3": {
+      "id": "part3",
+      "numberOfQuestions": 4,
+      "title": "Section 3 - Biology",
+      "questions": [
+        {
+          "id": 1,
+          "question": "What is the weight-bearing organelle in animal cells?",
+          "choices": ["Cytoplasm", "Nucleus", "Cell membrane", "Cell wall"],
+          "correctAnswerIndex": 1
+        },
+        {
+          "id": 2,
+          "question": "What is the classification of arsenic in the periodic table of elements?",
+          "choices": ["As", "Ar", "Ac", "Au"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 3,
+          "question": "What term describes the specificity of enzymes for their substrates?",
+          "choices": ["Substrate specificity", "Reaction rate", "Catalyst", "Activation energy"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 4,
+          "question": "What is an example of a chemical compound in biology?",
+          "choices": ["Mole", "Compound", "Element", "Mixture"],
+          "correctAnswerIndex": 1
+        }
+      ]
+    }
+  }
+  

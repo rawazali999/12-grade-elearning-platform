@@ -1,0 +1,96 @@
+{
+    "part1": {
+      "id": "part1",
+      "numberOfQuestions": 4,
+      "title": "Section 1 - Economic Geography",
+      "questions": [
+        {
+          "id": 1,
+          "question": "Which country is known for being the world's largest exporter of electronics?",
+          "choices": ["China", "United States", "Germany", "Japan"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 2,
+          "question": "What is the term for a region characterized by a cluster of similar industries?",
+          "choices": ["Trade route", "Industrial complex", "Economic zone", "Cluster zone"],
+          "correctAnswerIndex": 1
+        },
+        {
+          "id": 3,
+          "question": "Which river is a vital waterway for transporting goods in South America?",
+          "choices": ["Nile River", "Amazon River", "Yangtze River", "Danube River"],
+          "correctAnswerIndex": 1
+        },
+        {
+          "id": 4,
+          "question": "What is the main purpose of the Panama Canal?",
+          "choices": ["Hydropower generation", "Irrigation", "Navigation shortcut", "Flood control"],
+          "correctAnswerIndex": 2
+        }
+      ]
+    },
+    "part2": {
+      "id": "part2",
+      "numberOfQuestions": 4,
+      "title": "Section 2 - Economic Geography",
+      "questions": [
+        {
+          "id": 1,
+          "question": "Which city is a major global financial center known for its stock exchange?",
+          "choices": ["Frankfurt", "London", "Tokyo", "New York"],
+          "correctAnswerIndex": 3
+        },
+        {
+          "id": 2,
+          "question": "What is the primary focus of the term 'agglomeration' in economic geography?",
+          "choices": ["Urbanization", "Rural development", "Industrial clustering", "Agricultural expansion"],
+          "correctAnswerIndex": 2
+        },
+        {
+          "id": 3,
+          "question": "Which continent is home to the largest number of landlocked countries?",
+          "choices": ["Africa", "Asia", "South America", "Europe"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 4,
+          "question": "What is the impact of the greenhouse effect on global climate?",
+          "choices": ["Cooling of the atmosphere", "Rising sea levels", "Warming of the Earth", "Decrease in precipitation"],
+          "correctAnswerIndex": 2
+        }
+      ]
+    },
+    "part3": {
+      "id": "part3",
+      "numberOfQuestions": 4,
+      "title": "Section 3 - Economic Geography",
+      "questions": [
+        {
+          "id": 1,
+          "question": "Which natural resource is a key factor in the economy of the Middle East?",
+          "choices": ["Timber", "Oil", "Coal", "Natural gas"],
+          "correctAnswerIndex": 3
+        },
+        {
+          "id": 2,
+          "question": "What is the significance of the term 'economic globalization'?",
+          "choices": ["Localized economies", "International trade barriers", "Increased economic interdependence", "Limited market access"],
+          "correctAnswerIndex": 2
+        },
+        {
+          "id": 3,
+          "question": "Which ocean is the busiest in terms of shipping and trade?",
+          "choices": ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
+          "correctAnswerIndex": 3
+        },
+        {
+          "id": 4,
+          "question": "What is the concept of 'comparative advantage' in international trade?",
+          "choices": ["Equal trade opportunities", "Specialization based on efficiency", "Trade quotas", "Protectionist policies"],
+          "correctAnswerIndex": 1
+        }
+      ]
+    }
+  }
+  

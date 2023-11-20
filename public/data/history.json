@@ -1,0 +1,96 @@
+{
+    "part1": {
+      "id": "part1",
+      "numberOfQuestions": 4,
+      "title": "Section 1 - History",
+      "questions": [
+        {
+          "id": 1,
+          "question": "Who was the first President of the United States?",
+          "choices": ["Thomas Jefferson", "George Washington", "John Adams", "Abraham Lincoln"],
+          "correctAnswerIndex": 1
+        },
+        {
+          "id": 2,
+          "question": "In which year did Christopher Columbus first reach the Americas?",
+          "choices": ["1492", "1588", "1620", "1776"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 3,
+          "question": "What event marked the beginning of World War I?",
+          "choices": ["The sinking of the Lusitania", "The assassination of Archduke Franz Ferdinand", "The Battle of Jutland", "The signing of the Treaty of Versailles"],
+          "correctAnswerIndex": 1
+        },
+        {
+          "id": 4,
+          "question": "Who was the famous leader of the civil rights movement in the United States?",
+          "choices": ["Malcolm X", "Martin Luther King Jr.", "Rosa Parks", "Harriet Tubman"],
+          "correctAnswerIndex": 1
+        }
+      ]
+    },
+    "part2": {
+      "id": "part2",
+      "numberOfQuestions": 4,
+      "title": "Section 2 - History",
+      "questions": [
+        {
+          "id": 1,
+          "question": "Which ancient civilization built the pyramids of Giza?",
+          "choices": ["Greek", "Roman", "Egyptian", "Chinese"],
+          "correctAnswerIndex": 2
+        },
+        {
+          "id": 2,
+          "question": "What was the main cause of the French Revolution?",
+          "choices": ["Economic inequality", "Religious conflicts", "Monarchical power", "Foreign invasion"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 3,
+          "question": "Who was the leader of the Soviet Union during World War II?",
+          "choices": ["Joseph Stalin", "Vladimir Lenin", "Nikita Khrushchev", "Mikhail Gorbachev"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 4,
+          "question": "What document declared the American colonies independent from British rule?",
+          "choices": ["The Magna Carta", "The Emancipation Proclamation", "The Declaration of Independence", "The Bill of Rights"],
+          "correctAnswerIndex": 2
+        }
+      ]
+    },
+    "part3": {
+      "id": "part3",
+      "numberOfQuestions": 4,
+      "title": "Section 3 - History",
+      "questions": [
+        {
+          "id": 1,
+          "question": "Which empire was known for its extensive trade along the Silk Road?",
+          "choices": ["Ottoman Empire", "Roman Empire", "Mongol Empire", "Byzantine Empire"],
+          "correctAnswerIndex": 2
+        },
+        {
+          "id": 2,
+          "question": "What event marked the end of apartheid in South Africa?",
+          "choices": ["The Battle of Isandlwana", "The Sharpeville Massacre", "The Soweto Uprising", "The Truth and Reconciliation Commission"],
+          "correctAnswerIndex": 3
+        },
+        {
+          "id": 3,
+          "question": "Who was the first woman to win a Nobel Prize?",
+          "choices": ["Marie Curie", "Rosa Parks", "Eleanor Roosevelt", "Mother Teresa"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 4,
+          "question": "What ancient city was known for its Hanging Gardens?",
+          "choices": ["Rome", "Athens", "Babylon", "Carthage"],
+          "correctAnswerIndex": 2
+        }
+      ]
+    }
+  }
+  

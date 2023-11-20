@@ -1,0 +1,34 @@
+{
+    "mathematics": {
+      "id": "mathematics",
+      "numberOfQuestions": 4,
+      "title": "Mathematics",
+      "questions": [
+        {
+          "id": 1,
+          "question": "Solve the equation: 3x - 7 = 11",
+          "choices": ["x = 6", "x = 4", "x = 3", "x = 2"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 2,
+          "question": "What is the value of √144?",
+          "choices": ["12", "10", "8", "6"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 3,
+          "question": "If a rectangle has length 8 units and width 5 units, what is its area?",
+          "choices": ["13 square units", "30 square units", "40 square units", "56 square units"],
+          "correctAnswerIndex": 2
+        },
+        {
+          "id": 4,
+          "question": "Find the slope of the line passing through the points (2, 5) and (4, 9).",
+          "choices": ["2", "4", "1", "3"],
+          "correctAnswerIndex": 3
+        }
+      ]
+    }
+  }
+  

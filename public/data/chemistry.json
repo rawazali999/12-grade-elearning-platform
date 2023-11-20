@@ -1,0 +1,95 @@
+{
+    "part1": {
+      "id": "part1",
+      "numberOfQuestions": 4,
+      "title": "بابەتی یەکەم - شیمی",
+      "questions": [
+        {
+          "id": 1,
+          "question": "چۆنیشانی عددی ڕەمزە گۆرانی هیدرۆژین لە جدولی پیریۆدی چییە؟",
+          "choices": ["1", "2", "3", "4"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 2,
+          "question": "چۆنیشانی عنصری کلۆر لە جدولی پیریۆدی چییە؟",
+          "choices": ["Cl", "Cr", "Co", "Cu"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 3,
+          "question": "چۆنیشانی عنصری ڕەمزە گۆرانی سلیقە لە جدولی پیریۆدی چییە؟",
+          "choices": ["Na", "Ne", "Ni", "N"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 4,
+          "question": "چۆنیشانی پێچی ئەندازەی یەکسان لە جووڵانی گەرمیی چییە؟",
+          "choices": ["100°C", "0°C", "-273.15°C", "37°C"],
+          "correctAnswerIndex": 1
+        }
+      ]
+    },
+    "part2": {
+      "id": "part2",
+      "numberOfQuestions": 4,
+      "title": "بابەتی دووەم - شیمی",
+      "questions": [
+        {
+          "id": 1,
+          "question": "چۆنیشانی مەددی گازی دیۆکسایدی کاربۆن لە شێنی چییە؟",
+          "choices": ["CO2", "H2O", "O2", "N2"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 2,
+          "question": "چۆنیشانی ژێرەوەی pH چییە؟",
+          "choices": ["7", "14", "0", "1"],
+          "correctAnswerIndex": 2
+        },
+        {
+          "id": 3,
+          "question": "چۆنیشانی نرخی دیسپرسیۆنی ڕاگەی ئەنزیمە چییە؟",
+          "choices": ["Reaction rate", "Activation energy", "Catalyst", "Substrate concentration"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 4,
+          "question": "چۆنیشانی کۆنەڵیژۆژەلی مۆلێکۆلەر چییە؟",
+          "choices": ["Molar mass", "Atomic number", "Molar volume", "Molecular formula"],
+          "correctAnswerIndex": 0
+        }
+      ]
+    },
+    "part3": {
+      "id": "part3",
+      "numberOfQuestions": 4,
+      "title": "بابەتی سێیەم - شیمی",
+      "questions": [
+        {
+          "id": 1,
+          "question": "چۆنیشانی ڕێکتەکتەری دووئەش لە شیمیا چییە؟",
+          "choices": ["Product", "Reactant", "Catalyst", "Intermediate"],
+          "correctAnswerIndex": 3
+        },
+        {
+          "id": 2,
+          "question": "چۆنیشانی عنصری ئارسەنیک لە جدولی پیریۆدی چییە؟",
+          "choices": ["As", "Ar", "Ac", "Au"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 3,
+          "question": "چۆنیشانی ناوەڕاستی ئەنزیم لە ڕێکتەکتەریەکان چییە؟",
+          "choices": ["Substrate specificity", "Reaction rate", "Catalyst", "Activation energy"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "id": 4,
+          "question": "چۆنیشانی نموونەی شیمیایی چییە؟",
+          "choices": ["Mole", "Compound", "Element", "Mixture"],
+          "correctAnswerIndex": 1
+        }
+      ]
+    }
+}  

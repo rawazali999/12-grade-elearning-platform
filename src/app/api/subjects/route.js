@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-const subjects = [
+export const subjects = [
   {
     id: 1,
     title: "Kurdish",

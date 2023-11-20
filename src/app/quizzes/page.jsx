@@ -17,7 +17,10 @@ export default function QuizzesPage() {
       <h1 className="m-2 text-center text-3xl font-bold tracking-wider ">
         Quizzes
       </h1>
-      <div className="m-2 flex flex-wrap justify-center " id="quizzes">
+      <div
+        className="kurdish-font m-2 flex flex-wrap justify-center "
+        id="quizzes"
+      >
         {subjects.map((subject) => (
           <Card
             key={subject.id}

@@ -7,7 +7,6 @@ import getSubject from "@/lib/getSubject";
 export default async function page({ params }) {
   const { subject } = params;
   const data = await getSubject(subject);
-  // console.log(data);
 
   return (
     <Layout>
@@ -42,14 +41,4 @@ export default async function page({ params }) {
       </section>
     </Layout>
   );
-}
-
-export async function generateStaticParams() {
-  const subjects = await fetch(`${process.env.BASE_URL}/api/subjects`)
-    .then((res) => res.json())
-    .catch((error) => console.error(`Error: ${error}`));
-
-  return subjects.map((subject) => ({
-    subject: subject?.subject,
-  }));
 }
