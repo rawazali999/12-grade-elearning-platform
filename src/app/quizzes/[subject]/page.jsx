@@ -1,7 +1,6 @@
 import React from "react";
 import Layout from "@components/Layout";
 import Quiz from "@components/Quiz";
-import { subjects } from "@api/subjects/route";
 
 export default async function Page({ params }) {
   const { subject } = params;

@@ -1,17 +1,11 @@
-"use client";
 import React from "react";
 import Layout from "@components/Layout";
 import Card from "@components/Card";
-import { useState, useEffect } from "react";
 
-export default function QuizzesPage() {
-  const [subjects, setSubjects] = useState([]);
-  useEffect(() => {
-    fetch("/api/subjects")
-      .then((res) => res.json())
-      .then((data) => setSubjects(data))
-      .catch((error) => console.error("Error:", error));
-  }, []);
+export default async function QuizzesPage() {
+  const subjects = await fetch(`${process.env.BASE_URL}/api/subjects`)
+    .then((res) => res.json())
+    .catch((error) => console.log("Error:", error));
   return (
     <Layout>
       <h1 className="m-2 text-center text-3xl font-bold tracking-wider ">
