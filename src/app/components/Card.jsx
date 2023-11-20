@@ -13,9 +13,7 @@ const Card = ({ section, title, imageUrl, route }) => {
           height={300}
           alt={title}
         />
-        <h2 className="mx-2 py-4 text-sm  font-semibold  sm:text-lg">
-          {title}
-        </h2>
+        <h2 className=" py-4 text-sm  font-semibold  sm:text-lg">{title}</h2>
       </div>
     </Link>
   );
