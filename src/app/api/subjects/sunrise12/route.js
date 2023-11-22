@@ -6,7 +6,7 @@ export async function GET() {
     title: "sunrise12",
     original_title: " Sunrise 12 ",
     imageUrl: "sunrise12.jpg",
-    book: "https://drive.google.com/file/d/1Z7XCRXeh6CGT2z8BeuMDUCptQA7fcS7z/view",
+    book: "https://drive.google.com/file/d/1hIDeg1pQkKPy7x6DLadccV8NFqYrVl0-/view",
     course1: {
       id: 12345,
       kurdish_title: "بیرکاری پۆلی12ی زانستی | م. وەرزێر حەسەن (هەرێم) ",

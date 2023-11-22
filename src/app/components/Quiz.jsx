@@ -11,21 +11,21 @@ const Quiz = ({ data }) => {
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [quizStartTime, setQuizStartTime] = useState(null);
   const [timeRemaining, setTimeRemaining] = useState(null);
+  const [quizResult, setQuizResult] = useState(null); // Store the result details
 
-  const timerRef = useRef(null); // Use useRef to store the timer
+  const timerRef = useRef(null);
 
   useEffect(() => {
-    setCurrentSection(Object.keys(data)[0]); // Set the initial section
+    setCurrentSection(Object.keys(data)[0]);
   }, [data]);
 
   useEffect(() => {
     const startTimer = () => {
       timerRef.current = setInterval(() => {
-        const elapsedTime = (new Date() - quizStartTime) / 1000; // in seconds
-        const remainingTime = Math.max(0, quizDuration * 60 - elapsedTime); // in seconds
+        const elapsedTime = (new Date() - quizStartTime) / 1000;
+        const remainingTime = Math.max(0, quizDuration * 60 - elapsedTime);
         setTimeRemaining(remainingTime);
 
-        // Check if time has reached zero, and complete the quiz
         if (remainingTime === 0) {
           clearInterval(timerRef.current);
           setQuizCompleted(true);
@@ -38,7 +38,6 @@ const Quiz = ({ data }) => {
     }
 
     return () => {
-      // Capture the current timer value in a variable
       const currentTimer = timerRef.current;
       clearInterval(currentTimer);
     };
@@ -58,7 +57,7 @@ const Quiz = ({ data }) => {
 
   const handleStartQuiz = () => {
     setQuizStarted(true);
-    setQuizCompleted(false); // Reset quiz completion status
+    setQuizCompleted(false);
     setCurrentQuestionIndex(0);
     setUserAnswers(Array(numQuestions).fill(null));
     setQuizStartTime(new Date());
@@ -81,9 +80,37 @@ const Quiz = ({ data }) => {
     );
   };
 
+  const handleCompleteQuiz = () => {
+    setQuizCompleted(true);
+    clearInterval(timerRef.current); // Stop the timer
+  };
+
   const handleFinishQuiz = () => {
     setQuizCompleted(true);
     setQuizStarted(false);
+
+    // Generate the result only if the quiz has started
+    if (quizStarted) {
+      const score = calculateScore();
+      const quizEndTime = new Date();
+      const quizTimeInMinutes = (quizEndTime - quizStartTime) / (1000 * 60);
+
+      const resultDetails = data[currentSection]?.questions
+        .slice(0, numQuestions)
+        .map((question, index) => {
+          return {
+            question: question.question,
+            userAnswer: question.choices[userAnswers[index]],
+            correctAnswer: question.choices[question.correctAnswerIndex],
+          };
+        });
+
+      setQuizResult({
+        score,
+        timeTaken: quizTimeInMinutes.toFixed(2),
+        details: resultDetails,
+      });
+    }
   };
 
   const calculateScore = () => {
@@ -95,14 +122,14 @@ const Quiz = ({ data }) => {
   };
 
   const renderSetupPhase = () => (
-    <div className="mx-auto w-full rounded-lg border  p-6 shadow-md md:w-2/3 lg:w-1/2">
+    <div className="mx-auto w-full rounded-lg border p-6 shadow-md md:w-2/3 lg:w-1/2">
       <h2 className="mb-4 text-2xl font-bold">Quiz Setup</h2>
-      <div className=" sm:text-md mb-4 flex justify-between  text-sm md:text-lg ">
-        <label>Select Section:</label>
+      <div className="mb-4 flex justify-between px-4">
+        <label className="mr-4 text-lg">Select Section:</label>
         <select
           value={currentSection}
           onChange={(e) => handleSectionChange(e.target.value)}
-          className="w-40 rounded-sm border  border-cyan-950 bg-slate-100 py-1  text-slate-950 sm:w-52"
+          className="w-52 rounded-sm border border-cyan-950 bg-slate-100 px-2 py-1 text-slate-950"
         >
           {Object.keys(data).map((section) => (
             <option key={section} value={section}>
@@ -111,25 +138,24 @@ const Quiz = ({ data }) => {
           ))}
         </select>
       </div>
-      <div className="sm:text-md mb-4 flex justify-between  text-sm md:text-lg ">
-        <label>Select Duration (minutes):</label>
+      <div className="mb-4 flex justify-between px-4">
+        <label className="mr-4 text-lg">Select Duration (minutes):</label>
         <input
           type="number"
           min="1"
           value={quizDuration || ""}
           onChange={handleDurationChange}
-          className="w-40 rounded-sm border  border-cyan-950 bg-slate-100 px-2 py-1 text-slate-950 sm:w-52"
+          className="w-52 rounded-sm border border-cyan-950 bg-slate-100 px-2 py-1 text-slate-950"
         />
       </div>
-      <div className="sm:text-md mb-4 flex justify-between  text-sm md:text-lg ">
-        <label>Number of Questions:</label>
+      <div className="mb-4 flex justify-between px-4">
+        <label className="mr-4 text-lg">Number of Questions:</label>
         <input
           type="number"
           min="1"
-          max={data[currentSection]?.questions.length}
           value={numQuestions || ""}
           onChange={handleNumQuestionsChange}
-          className="w-40 rounded-sm border  border-cyan-950 bg-slate-100 px-2 py-1 text-slate-950 sm:w-52"
+          className="w-52 rounded-sm border border-cyan-950 bg-slate-100 px-2 py-1 text-slate-950"
         />
       </div>
       <button
@@ -147,18 +173,18 @@ const Quiz = ({ data }) => {
       data[currentSection]?.questions[currentQuestionIndex];
 
     return (
-      <div className="mx-auto w-1/2 rounded-lg p-6 shadow-md">
+      <div className="mx-auto w-full rounded-lg p-6 text-start shadow-md sm:w-2/3">
         <h2 className="mb-4 text-2xl font-bold">{currentQuestion.question}</h2>
         <div className="space-y-2">
           {currentQuestion.choices.map((choice, index) => (
             <button
               key={index}
-              className={`block w-full rounded bg-blue-500 px-4 py-2 text-white ${
-                userAnswers[currentQuestionIndex] === index ? "bg-blue-700" : ""
+              className={`block w-full rounded bg-blue-500 px-4 py-2 text-left text-white ${
+                userAnswers[currentQuestionIndex] === index ? "bg-blue-900" : ""
               }`}
               onClick={() => handleAnswerSelect(index)}
             >
-              {choice}
+              {String.fromCharCode(97 + index)}. {choice}
             </button>
           ))}
         </div>
@@ -171,9 +197,6 @@ const Quiz = ({ data }) => {
     const quizEndTime = new Date();
     const quizTimeInMinutes = (quizEndTime - quizStartTime) / (1000 * 60);
 
-    // Pause the timer when rendering the result
-    clearInterval(timerRef.current);
-
     const resultDetails = data[currentSection]?.questions
       .slice(0, numQuestions)
       .map((question, index) => {
@@ -185,7 +208,7 @@ const Quiz = ({ data }) => {
       });
 
     return (
-      <div className="rounded-lg p-6 shadow-md">
+      <div className="rounded-lg  p-6 shadow-md">
         <h2 className="mb-4 text-2xl font-bold">Quiz Result</h2>
         <p className="text-lg">
           Your score: {score} / {numQuestions}
@@ -230,8 +253,7 @@ const Quiz = ({ data }) => {
         renderSetupPhase()
       ) : (
         <div>
-          <div className="my-4 flex justify-around">
-            {" "}
+          <div className="mx-4 flex justify-between">
             <p className="mb-2 text-lg">
               Question {currentQuestionIndex + 1} of {numQuestions}
             </p>
@@ -254,10 +276,10 @@ const Quiz = ({ data }) => {
                 Next
               </button>
               <button
-                className="my-2 w-52 rounded bg-red-500 px-4 py-2 text-white hover:bg-red-700"
-                onClick={handleFinishQuiz}
+                className="my-2 w-52 rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-700"
+                onClick={handleCompleteQuiz}
               >
-                Finish Quiz
+                Complete Quiz
               </button>
             </div>
           )}

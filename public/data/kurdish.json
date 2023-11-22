@@ -1,8 +1,8 @@
 {
-    "kurdish": {
+    "kurdish_grammar": {
       "id": "kurdish",
       "numberOfQuestions": 5,
-      "title": "Kurdish Language",
+      "title": "ڕێزمان",
       "questions": [
         {
           "id": 1,
@@ -39,7 +39,7 @@
     "literature": {
       "id": "literature",
       "numberOfQuestions": 5,
-      "title": "Kurdish Literature",
+      "title": "ئەدەب",
       "questions": [
         {
           "id": 1,
@@ -76,7 +76,7 @@
     "speaking_fluently": {
       "id": "speaking_fluently",
       "numberOfQuestions": 5,
-      "title": "Speaking Fluently in Kurdish",
+      "title": "ڕەوانبێژی",
       "questions": [
         {
           "id": 1,

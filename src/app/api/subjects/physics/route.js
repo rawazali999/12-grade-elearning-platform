@@ -6,10 +6,10 @@ export async function GET() {
     title: "physics",
     original_title: "زانست بۆ هەمووان - فیزیا",
     imageUrl: "physics.jpg",
-    book: "https://drive.google.com/file/d/1Z7XCRXeh6CGT2z8BeuMDUCptQA7fcS7z/view",
+    book: "https://drive.google.com/file/d/1iKIOrRmSr9nV5RuCSLkAPCX5mK_I8z_s/view",
     course1: {
       id: 12345,
-      kurdish_title: "بیرکاری پۆلی12ی زانستی | م. وەرزێر حەسەن (هەرێم) ",
+      kurdish_title: "فیزیا پۆلی12ی زانستی | م. کارزان  ",
       lessons: [
         {
           id: 1,

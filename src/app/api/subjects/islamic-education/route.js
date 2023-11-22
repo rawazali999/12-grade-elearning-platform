@@ -1,15 +1,15 @@
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  const biology = {
-    id: 6,
-    title: "biology",
-    original_title: "زانست بۆ هەمووان - زیندەزانی ",
-    imageUrl: "biology.jpg",
-    book: "https://drive.google.com/file/d/16iksU6mArrvvbrAPBkEiM4CUGcR6hweh/view",
+  const islamicEducation = {
+    id: 9,
+    title: "islamic-education",
+    original_title: "پەروەردەی ئیسلامی",
+    imageUrl: "islamic_education.jpg",
+    book: "https://drive.google.com/file/d/1Z7XCRXeh6CGT2z8BeuMDUCptQA7fcS7z/view",
     course1: {
       id: 12345,
-      kurdish_title: "بیرکاری پۆلی12ی زانستی | م. وەرزێر حەسەن (هەرێم) ",
+      kurdish_title: " پەروەردەی ئیسلامی - مامۆستا محمد سەرۆکی",
       lessons: [
         {
           id: 1,
@@ -39,5 +39,5 @@ export async function GET() {
     },
   };
 
-  return NextResponse.json(biology);
+  return NextResponse.json(islamicEducation);
 }

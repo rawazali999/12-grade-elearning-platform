@@ -1,8 +1,8 @@
 {
-    "mathematics": {
-      "id": "mathematics",
+    "part_1": {
+      "id": "mathematics_part_1",
       "numberOfQuestions": 6,
-      "title": "Advanced Mathematics",
+      "title": "بەشی ١",
       "questions": [
         {
           "id": 1,
@@ -41,10 +41,10 @@
           "correctAnswerIndex": 2
         }
       ]
-    },"mathematics_part_2": {
+    },"part_2": {
         "id": "mathematics_part_2",
         "numberOfQuestions": 6,
-        "title": "Advanced Mathematics - Part 2",
+        "title": "بەشی ٢",
         "questions": [
           {
             "id": 1,

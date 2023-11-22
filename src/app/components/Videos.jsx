@@ -10,61 +10,51 @@ export default function Videos({ subject, course }) {
   const [currentLesson, setCurrentLesson] = useState();
   const [checkedCount, setCheckedCount] = useState(0);
   const [progressValue, setProgressValue] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const { data: session } = useSession();
-  useEffect(() => {
-    if (course) {
-      setLessons(course.lessons);
-      setCurrentLesson(course.lessons[0].src);
-    }
-  }, [course]);
 
   useEffect(() => {
-    if (lessons.length > 0) {
-      async function getVideos() {
-        const progress = await getOrCreateProgress(
-          session?.user?.email,
-          course?.id,
-          subject?.title,
-          lessons,
-        );
-        setLessons(progress);
+    setCurrentLesson(course.lessons[0].src);
 
+    async function fetchData() {
+      setIsLoading(true);
+
+      const progress = await getOrCreateProgress(
+        session?.user?.email,
+        course?.id,
+        subject?.title,
+        course?.lessons,
+      );
+      setLessons(progress);
+
+      if (progress) {
         const newCheckedCount = progress.filter(
           (lesson) => lesson.checked,
         ).length;
         setCheckedCount(newCheckedCount);
 
-        setProgressValue(Math.round((newCheckedCount / lessons.length) * 100));
-
-        setIsLoading(false);
+        setProgressValue(Math.round((newCheckedCount / progress.length) * 100));
       }
 
-      getVideos();
+      setIsLoading(false);
     }
+    fetchData();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     // without these dependencies, the useEffect will not create a new progress or get the progress
-  }, [session, subject, course]);
+  }, [session, subject, course, progressValue]);
 
   const handleProgress = async (e) => {
     const id = e.target.id;
     const checked = e.target.checked;
-
-    // Optimistically update the state to avoid waiting for the server response
-    // that make the input state to be updated immediately
-    setLessons((prevVideos) =>
-      prevVideos.map((lesson) =>
-        lesson.id === id ? { ...lesson, checked: checked } : lesson,
-      ),
-    );
-    const newCheckedCount = checkedCount + (e.target.checked ? 1 : -1);
+    setIsLoading(true);
+    const newCheckedCount = checkedCount + (checked ? 1 : -1);
     setCheckedCount(newCheckedCount);
     const newProgressValue = Math.round(
       (newCheckedCount / lessons.length) * 100,
     );
     setProgressValue(newProgressValue);
-    setIsLoading(true);
+
     try {
       if (session && subject) {
         await fetch(`${process.env.NEXTAUTH_URL}/api/progress/update`, {

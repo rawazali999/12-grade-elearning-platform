@@ -1,5 +1,3 @@
-import { NextResponse } from "next/server";
-
 export const subjects = [
   {
     id: 1,
@@ -11,35 +9,35 @@ export const subjects = [
   {
     id: 2,
     title: "Arabic Part 1",
-    original_title: "  كتاب اللغة العربية  الجزء الأول",
+    original_title: "اللغة العربية  الجزء الأول",
     route: "arabic-part1",
     imageUrl: "arabic_part1.jpg",
   },
   {
     id: 3,
     title: "Arabic Part 2",
-    original_title: "  كتاب اللغة العربية  الجزء الثاني",
+    original_title: "اللغة العربية  الجزء الثاني",
     route: "arabic-part2",
     imageUrl: "arabic_part2.jpg",
   },
   {
     id: 4,
     title: "Sunrise 12",
-    original_title: " Sunrise 12 ",
+    original_title: "Sunrise 12",
     route: "sunrise12",
     imageUrl: "sunrise12.jpg",
   },
   {
     id: 5,
     title: "Scientific Math",
-    original_title: " بیرکاری بۆ هەموان - زانستی ",
+    original_title: "بیرکاری - زانستی",
     route: "scientific-math",
     imageUrl: "scientific_math.jpg",
   },
   {
     id: 6,
     title: "Biology",
-    original_title: "زانست بۆ هەمووان - زیندەزانی ",
+    original_title: "زانست - زیندەزانی",
     route: "biology",
     imageUrl: "biology.jpg",
   },
@@ -47,21 +45,21 @@ export const subjects = [
   {
     id: 7,
     title: "Physics",
-    original_title: "زانست بۆ هەمووان - فیزیا",
+    original_title: "زانست - فیزیا",
     route: "physics",
     imageUrl: "physics.jpg",
   },
   {
     id: 8,
     title: "Chemistry",
-    original_title: "زانست بۆ هەمووان - کیمیا",
+    original_title: "زانست - کیمیا",
     route: "chemistry",
     imageUrl: "chemistry.jpg",
   },
   {
     id: 9,
     title: "Literary Math",
-    original_title: "بیرکاری بۆ هەموان - ئەدەبی",
+    original_title: "بیرکاری - ئەدەبی",
     route: "literary-math",
     imageUrl: "literary_math.jpg",
   },
@@ -69,7 +67,7 @@ export const subjects = [
   {
     id: 10,
     title: "Economic geography",
-    original_title: " جوگرافیای ئابووری",
+    original_title: "جوگرافیای ئابووری",
     route: "economic-geography",
     imageUrl: "economic_geography.jpg",
   },
@@ -87,8 +85,11 @@ export const subjects = [
     route: "economy",
     imageUrl: "economy.jpg",
   },
+  {
+    id: 13,
+    title: "Islamic Education",
+    original_title: "پەروەردەی ئیسلامی",
+    route: "islamic-education",
+    imageUrl: "islamic_education.jpg",
+  },
 ];
-
-export async function GET() {
-  return NextResponse.json(subjects);
-}

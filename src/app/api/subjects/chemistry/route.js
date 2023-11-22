@@ -6,7 +6,7 @@ export async function GET() {
     title: "chemistry",
     original_title: "زانست بۆ هەمووان - کیمیا",
     imageUrl: "chemistry.jpg",
-    book: "https://drive.google.com/file/d/1Z7XCRXeh6CGT2z8BeuMDUCptQA7fcS7z/view",
+    book: "https://drive.google.com/file/d/1MeEl4SDzqXPCAnxn6G3pqzOlvlSfuRqu/view",
     course1: {
       id: 12345,
       kurdish_title: "بیرکاری پۆلی12ی زانستی | م. وەرزێر حەسەن (هەرێم) ",

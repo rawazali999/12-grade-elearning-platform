@@ -18,14 +18,7 @@ const ChatBot = () => {
     })();
   }, []); // Empty dependency array ensures that the effect runs only once after the initial render
 
-  return (
-    <div>
-      {/* Your React component content goes here */}
-      <p>
-        Welcome to my website! Feel free to ask any questions using the chatbot.
-      </p>
-    </div>
-  );
+  return <>{/* Your React component content goes here */}</>;
 };
 
 export default ChatBot;
