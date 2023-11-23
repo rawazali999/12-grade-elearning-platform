@@ -5,8 +5,7 @@ import Footer from "@components/Footer";
 export default function Layout({ children }) {
   return (
     <div className="font-sans">
-      <Navbar />
-      {children}
+      <Navbar>{children}</Navbar>
       <Footer />
     </div>
   );

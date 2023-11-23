@@ -258,10 +258,20 @@ const Quiz = ({ data }) => {
               Question {currentQuestionIndex + 1} of {numQuestions}
             </p>
             <p className="mb-4 text-lg">
-              Time Remaining: {Math.floor(timeRemaining / 60)}:
-              {Math.floor(timeRemaining % 60)
-                .toString()
-                .padStart(2, "0")}
+              Time Remaining : &nbsp;
+              <span className="countdown text-xl">
+                <span
+                  style={{ "--value": Math.floor(timeRemaining / 60) }}
+                ></span>
+                :
+                <span
+                  style={{
+                    "--value": Math.floor(timeRemaining % 60)
+                      .toString()
+                      .padStart(2, "0"),
+                  }}
+                ></span>
+              </span>
             </p>
           </div>
           {quizCompleted ? (
