@@ -10,7 +10,7 @@ export default async function page({ params }) {
 
   return (
     <Layout>
-      <section className=" kurdish-font h-full w-full ">
+      <section className=" kurdish-font flex h-full w-full flex-col">
         <div className="flex h-full w-full flex-col  pt-4 sm:flex-row sm:justify-between">
           <div className="  w-full px-4 sm:w-1/4">
             <Image
@@ -35,7 +35,7 @@ export default async function page({ params }) {
               </a>
             </div>
             <hr />
-          </div>
+          </div>{" "}
         </div>
         <Videos subject={data} course={data?.course1} />
       </section>
