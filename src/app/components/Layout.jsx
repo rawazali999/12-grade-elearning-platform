@@ -25,7 +25,8 @@ export default function Layout({ children }) {
         <div className="drawer-content flex flex-col">
           {/* this children refers to all content between navbar and footer */}
           <Navbar />
-          {children}
+          <main>{children}</main>
+
           <Footer />
         </div>
 

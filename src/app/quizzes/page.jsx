@@ -6,7 +6,7 @@ import { subjects } from "@data/subjects";
 export default async function QuizzesPage() {
   return (
     <Layout>
-      <h1 className="m-2 text-center text-3xl font-bold tracking-wider ">
+      <h1 className="m-2 mt-20 text-center text-3xl font-bold tracking-wider ">
         Quizzes
       </h1>
       <div

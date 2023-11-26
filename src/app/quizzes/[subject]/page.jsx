@@ -20,7 +20,7 @@ export default async function Page({ params }) {
 
   return (
     <Layout>
-      <h1 className="m-2 text-center text-3xl font-bold capitalize">
+      <h1 className="m-2 mt-20 text-center text-3xl font-bold capitalize">
         {subject} Quiz Section{" "}
       </h1>
       <div className="kurdish-font ">

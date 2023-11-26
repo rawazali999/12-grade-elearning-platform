@@ -7,9 +7,9 @@ import ThemeToggle from "./theme/ThemeToggle";
 import { redirect } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { TbLogout } from "react-icons/tb";
-import { IoMdSchool, IoMdNotificationsOutline } from "react-icons/io";
 import { IoMenu } from "react-icons/io5";
 import Image from "next/image";
+import Notifications from "@components/Notifications";
 
 export default function Navbar() {
   const { data: session } = useSession();
@@ -19,7 +19,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="english flex items-center justify-between bg-cyan-900 p-3 text-white">
+    <nav className="fixed top-0 flex w-full items-center justify-between bg-cyan-900 p-3 text-white">
       {/* Logo */}
       <Link
         className="text-md flex items-center gap-1  font-semibold text-white "
@@ -37,18 +37,15 @@ export default function Navbar() {
       </Link>
 
       {/* Nav Links */}
-      <ul className="font-heading mx-auto hidden space-x-12 px-4 font-semibold md:flex">
+      <ul className=" mx-auto hidden space-x-12 px-4 font-semibold text-gray-100 hover:bg-gray-100 hover:text-cyan-900 md:flex">
         <li className="mb-1">
-          <Link
-            href="/"
-            className=" rounded px-4 py-2 text-sm font-semibold text-gray-100 hover:bg-gray-100 hover:text-cyan-900"
-          >
+          <Link href="/" className=" rounded px-4 py-2 text-sm font-semibold ">
             Home
           </Link>
         </li>
         <li className="mb-1">
           <Link
-            className=" rounded px-4 py-2 text-sm font-semibold text-gray-100 hover:bg-gray-100 hover:text-cyan-900"
+            className=" rounded px-4 py-2 text-sm font-semibold "
             href="/quizzes"
           >
             Quizzes
@@ -57,17 +54,14 @@ export default function Navbar() {
 
         <li className="mb-1">
           <Link
-            className=" rounded px-4 py-2 text-sm font-semibold text-gray-100 hover:bg-gray-100 hover:text-cyan-900"
+            className=" rounded px-4 py-2 text-sm font-semibold "
             href="/#subjects"
           >
             Subjects
           </Link>
         </li>
         <li className="mb-1">
-          <Link
-            className=" rounded px-4 py-2 text-sm font-semibold text-gray-100 hover:bg-gray-100 hover:text-cyan-900"
-            href="#"
-          >
+          <Link className=" rounded px-4 py-2 text-sm font-semibold " href="#">
             Settings
           </Link>
         </li>
@@ -75,9 +69,10 @@ export default function Navbar() {
 
       <div className="flex items-center justify-center gap-3 ">
         <ThemeToggle />
-        <Link href={"/notifications"}>
+        {/* <Link href={"/notifications"}>
           <IoMdNotificationsOutline className="cursor-pointer text-2xl" />
-        </Link>
+        </Link> */}
+        <Notifications />
 
         <div className="dropdown dropdown-end hidden md:block">
           <div tabIndex={0} className="avatar placeholder cursor-pointer">

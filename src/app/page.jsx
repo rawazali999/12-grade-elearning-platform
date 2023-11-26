@@ -16,16 +16,15 @@ export const metadata = {
 export default async function Home() {
   const session = await getServerSession(authOptions);
   if (!session) redirect("/login");
+
   return (
     <Layout>
-      <main>
-        <Hero />
-        <Tabs
-          tab1={<Subjects />}
-          tab2={<CommonQuestions />}
-          tab3={<Guidance />}
-        />
-      </main>
+      <Hero />
+      <Tabs
+        tab1={<Subjects />}
+        tab2={<CommonQuestions />}
+        tab3={<Guidance />}
+      />
     </Layout>
   );
 }

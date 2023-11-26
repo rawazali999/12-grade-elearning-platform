@@ -5,6 +5,9 @@ const nextConfig = {
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     BASE_URL: process.env.BASE_URL,
+    MAGICBELL_API_KEY: process.env.MAGICBELL_API_KEY,
+    MAGICBELL_API_SECRET: process.env.MAGICBELL_API_SECRET,
+    
   },
 };
 

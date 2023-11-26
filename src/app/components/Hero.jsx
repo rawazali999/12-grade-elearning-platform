@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <div className="flex flex-wrap py-6 ">
+    <div className="mt-14 flex flex-wrap py-6 ">
       <div className="mb-10 w-full sm:w-1/2">
         <div className="container mx-auto h-full sm:p-10">
           <header className="container mt-10 h-full items-center px-4 lg:mt-0 lg:flex">
