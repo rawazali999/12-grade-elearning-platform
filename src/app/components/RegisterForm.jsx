@@ -61,10 +61,6 @@ export default function RegisterForm() {
           return;
         }
 
-        if (!progressRes.ok) {
-          console.log("Failed to create initial progress.");
-        }
-
         router.replace("/");
       } else {
         console.log("User registration failed.");

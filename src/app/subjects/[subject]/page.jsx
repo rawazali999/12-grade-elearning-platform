@@ -2,11 +2,23 @@ import React from "react";
 import Layout from "@components/Layout";
 import Image from "next/image";
 import { AiOutlineFilePdf } from "react-icons/ai";
-import Videos from "../../components/Videos";
-import getSubject from "@/lib/getSubject";
+import Videos from "@components/Videos";
 export default async function page({ params }) {
   const { subject } = params;
-  const data = await getSubject(subject);
+  const response = await fetch(
+    `${process.env.BASE_URL}/api/subjects/${subject}`,
+    {
+      method: "POST",
+      cache: "no-cache",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ subject: subject }),
+    },
+  );
+
+  const data = await response.json();
+  // console.log(data);
 
   return (
     <Layout>

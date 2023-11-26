@@ -4,12 +4,13 @@ import path from "path";
 
 export async function POST(req) {
   const { subject } = await req.json();
+  // console.log(subject);
 
   const filePath = path.join(
     process.cwd(),
     "public",
     "data",
-    "quizzes",
+    "subjects",
     `${subject}.json`,
   );
 

@@ -9,11 +9,11 @@ export default function Hero() {
           <header className="container mt-10 h-full items-center px-4 lg:mt-0 lg:flex">
             <div className="w-full">
               <h1 className="text-3xl font-bold  lg:text-5xl ">
-                Welcome to 12 Grade E-Learning Platform
+                Welcome to 12 Grade Platform
               </h1>
-              <div className="my-4 h-2 w-20 bg-cyan-700" />
+              <div className="my-4 h-2 w-full bg-cyan-700" />
               <p className="mb-10 text-xl ">
-                12 grade E-learning platform is a platform that helps 12 grade
+                12 grade platform is an E-learning platform that helps 12 grade
                 students to learn and practice their skills in different
                 subjects.
               </p>

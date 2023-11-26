@@ -8,8 +8,8 @@ import { redirect } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { TbLogout } from "react-icons/tb";
 import { IoMdSchool, IoMdNotificationsOutline } from "react-icons/io";
-
 import { IoMenu } from "react-icons/io5";
+import Image from "next/image";
 
 export default function Navbar() {
   const { data: session } = useSession();
@@ -22,11 +22,18 @@ export default function Navbar() {
     <nav className="english flex items-center justify-between bg-cyan-900 p-3 text-white">
       {/* Logo */}
       <Link
-        className="sm:text-md flex items-center gap-2 text-sm font-semibold  text-white "
+        className="text-md flex items-center gap-1  font-semibold text-white "
         href="/"
       >
-        <IoMdSchool className="text-5xl text-white" />
-        <p>12 Grade E-learning Platform</p>
+        {/* <IoMdSchool className="text-5xl text-white" /> */}
+        <Image
+          src={"/images/logo.png"}
+          alt="logo"
+          className=" h-auto w-auto "
+          width={40}
+          height={40}
+        />
+        <p>12th Grade Platform</p>
       </Link>
 
       {/* Nav Links */}
@@ -88,12 +95,12 @@ export default function Navbar() {
           </div>
           <div
             tabIndex={0}
-            className="menu dropdown-content rounded-box z-[1] w-52 bg-base-100 p-2 shadow"
+            className="menu dropdown-content rounded-box z-[1] w-auto bg-base-100  shadow"
           >
             <div className="flex flex-col items-center justify-center">
               <UserInfo />
               <button
-                className="text-md  flex items-center justify-center gap-2 rounded border border-gray-900 px-2 py-1  text-center leading-loose hover:bg-cyan-900  hover:text-gray-100 dark:border-gray-100 "
+                className="text-md flex w-full items-center justify-center gap-2  bg-cyan-900 px-2  py-1 text-center"
                 onClick={handleSignOut}
               >
                 Sign out

@@ -20,8 +20,10 @@ const Tabs = ({ tab1, tab2, tab3 }) => {
         {tabs.map((tab) => (
           <button
             key={tab.id}
-            className={`md:text-md  cursor-pointer border-cyan-800 p-2 text-xs dark:border-white sm:text-sm ${
-              tab.id === activeTab.id ? "border-b-2" : ""
+            className={`md:text-md  cursor-pointer  border-cyan-800 p-2 text-xs  sm:text-sm ${
+              tab.id === activeTab.id
+                ? " rounded-t-md border border-b-0 bg-cyan-800 px-4 text-white"
+                : " border-b-2"
             }`}
             onClick={() => handleTabClick(tab)}
           >
