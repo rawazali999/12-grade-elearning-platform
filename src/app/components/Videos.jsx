@@ -4,6 +4,7 @@ import { AiOutlineYoutube } from "react-icons/ai";
 import { useSession } from "next-auth/react";
 import getOrCreateProgress from "@/lib/getOrCreateProgress";
 import Spinner from "@components/Spinner";
+import sendNotification from "@/lib/sendNotification";
 
 export default function Videos({ subject, course }) {
   const [lessons, setLessons] = useState([]);
@@ -54,6 +55,13 @@ export default function Videos({ subject, course }) {
       (newCheckedCount / lessons.length) * 100,
     );
     setProgressValue(newProgressValue);
+    if (newProgressValue === 100) {
+      await sendNotification(
+        `Congratulations 👏🎉 `,
+        `You have completed the ${subject?.title} subject ${course?.kurdish_title} course.`,
+        session?.user?.email,
+      );
+    }
 
     try {
       if (session && subject) {
@@ -76,7 +84,7 @@ export default function Videos({ subject, course }) {
   };
 
   return (
-    <div className="flex  w-full flex-col p-4 text-gray-900 dark:text-gray-100">
+    <div className="mb-20 flex w-full flex-col p-4 text-gray-900 dark:text-gray-100">
       <div className="my-4 flex flex-col self-center text-center text-2xl">
         <h2>
           <AiOutlineYoutube className="inline-block text-2xl" />

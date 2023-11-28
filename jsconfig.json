@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "jsx": "react",
     "paths": {
       "@/*": ["./*"],
       "@components/*": ["./src/app/components/*"],
@@ -8,6 +9,7 @@
       "@lib/*": ["./lib/*"],
       "@layouts/*": ["./src/app/layouts/*"],
       "@data/*": ["./public/data/*"],
+      "@pdf/*": ["./public/pdf/*"],
     }
   }
 }

@@ -68,6 +68,7 @@ const Quiz = ({ data }) => {
     if (currentQuestionIndex + 1 < numQuestions) {
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
     } else {
+      clearInterval(timerRef.current); // Stop the timer
       setQuizCompleted(true);
     }
   };
@@ -196,19 +197,26 @@ const Quiz = ({ data }) => {
     const score = calculateScore();
     const quizEndTime = new Date();
     const quizTimeInMinutes = (quizEndTime - quizStartTime) / (1000 * 60);
+    const isQuizCompleted = quizCompleted || timeRemaining === 0; // Check if quiz is completed
 
     const resultDetails = data[currentSection]?.questions
       .slice(0, numQuestions)
       .map((question, index) => {
+        const userAnswerIndex = userAnswers[index];
+        const isCorrect = userAnswerIndex === question.correctAnswerIndex;
+
         return {
           question: question.question,
-          userAnswer: question.choices[userAnswers[index]],
+          userAnswer: question.choices[userAnswerIndex],
           correctAnswer: question.choices[question.correctAnswerIndex],
+          choices: question.choices,
+          isCorrect,
+          userAnswerIndex, // Include userAnswerIndex in the result
         };
       });
 
     return (
-      <div className="rounded-lg  p-6 shadow-md">
+      <div className="flex  flex-col items-center rounded-lg p-6 shadow-md">
         <h2 className="mb-4 text-2xl font-bold">Quiz Result</h2>
         <p className="text-lg">
           Your score: {score} / {numQuestions}
@@ -216,17 +224,34 @@ const Quiz = ({ data }) => {
         <p className="text-lg">
           Time taken: {quizTimeInMinutes.toFixed(2)} minutes
         </p>
-        <div className="mt-4">
-          <h3 className="mb-2 text-lg font-semibold">Question-wise details:</h3>
+        <div className=" m-2 w-full flex-col justify-center p-2 sm:w-1/2">
           {resultDetails.map((result, index) => (
-            <div key={index} className="mb-4">
+            <div key={index} className="my-4 gap-4 rounded-lg border p-4">
               <p className="text-md mb-1 font-medium">Question {index + 1}:</p>
               <p className="mb-1">{result.question}</p>
+              <div className="flex flex-col gap-4">
+                {result.choices.map((choice, choiceIndex) => (
+                  <div
+                    key={choiceIndex}
+                    className={`my-2  rounded px-4 py-2 ${
+                      isQuizCompleted
+                        ? choiceIndex === result.correctAnswerIndex
+                          ? "bg-green-500 text-white"
+                          : choiceIndex === result.userAnswerIndex
+                          ? result.isCorrect
+                            ? "bg-green-500 text-white"
+                            : "bg-red-500 text-white"
+                          : "bg-gray-200 text-gray-800"
+                        : ""
+                    }`}
+                  >
+                    {String.fromCharCode(97 + choiceIndex)}. {choice}
+                  </div>
+                ))}
+              </div>
               <p
                 className={`mb-1 text-sm ${
-                  result.userAnswer === result.correctAnswer
-                    ? "text-green-500"
-                    : "text-red-500"
+                  isQuizCompleted && result.isCorrect ? "text-green-500" : ""
                 }`}
               >
                 Your Answer: {result.userAnswer}
@@ -248,7 +273,7 @@ const Quiz = ({ data }) => {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto  p-4 ">
       {!quizStarted ? (
         renderSetupPhase()
       ) : (

@@ -3,6 +3,7 @@ import Layout from "@components/Layout";
 import Image from "next/image";
 import { AiOutlineFilePdf } from "react-icons/ai";
 import Videos from "@components/Videos";
+import Book from "../../components/Book";
 export default async function page({ params }) {
   const { subject } = params;
   const response = await fetch(
@@ -22,7 +23,7 @@ export default async function page({ params }) {
 
   return (
     <Layout>
-      <section className=" kurdish-font flex h-full w-full flex-col">
+      <section className=" kurdish-font mt-20 flex h-full w-full flex-col">
         <div className="flex h-full w-full flex-col  pt-4 sm:flex-row sm:justify-between">
           <div className="  w-full px-4 sm:w-1/4">
             <Image
@@ -45,6 +46,7 @@ export default async function page({ params }) {
                 <AiOutlineFilePdf className="inline-block text-2xl" />
                 کتێبی {data?.original_title}
               </a>
+              <Book file="/pdf/kurdish.pdf" />
             </div>
             <hr />
           </div>{" "}

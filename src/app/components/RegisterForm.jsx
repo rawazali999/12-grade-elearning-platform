@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
+import sendNotification from "@lib/sendNotification";
 
 export default function RegisterForm() {
   const [name, setName] = useState("");
@@ -60,8 +61,12 @@ export default function RegisterForm() {
           setError("Invalid Credentials");
           return;
         }
-
         router.replace("/");
+        await sendNotification(
+          `Welcome ${name} to 12th Grade Platform`,
+          "We are glad to have you here. You can now start learning with us.",
+          email,
+        );
       } else {
         console.log("User registration failed.");
       }

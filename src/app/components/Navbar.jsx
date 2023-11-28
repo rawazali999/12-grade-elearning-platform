@@ -19,7 +19,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 flex w-full items-center justify-between bg-cyan-900 p-3 text-white">
+    <nav className="fixed top-0 z-10  flex w-full items-center justify-between bg-cyan-900 p-3 text-white">
       {/* Logo */}
       <Link
         className="text-md flex items-center gap-1  font-semibold text-white "
@@ -37,15 +37,18 @@ export default function Navbar() {
       </Link>
 
       {/* Nav Links */}
-      <ul className=" mx-auto hidden space-x-12 px-4 font-semibold text-gray-100 hover:bg-gray-100 hover:text-cyan-900 md:flex">
+      <ul className=" mx-auto hidden space-x-12 px-4 font-semibold  md:flex">
         <li className="mb-1">
-          <Link href="/" className=" rounded px-4 py-2 text-sm font-semibold ">
+          <Link
+            href="/"
+            className=" rounded px-4 py-2 text-sm font-semibold text-gray-100 hover:bg-gray-100 hover:text-cyan-900 "
+          >
             Home
           </Link>
         </li>
         <li className="mb-1">
           <Link
-            className=" rounded px-4 py-2 text-sm font-semibold "
+            className=" rounded px-4 py-2 text-sm font-semibold text-gray-100 hover:bg-gray-100 hover:text-cyan-900 "
             href="/quizzes"
           >
             Quizzes
@@ -54,14 +57,17 @@ export default function Navbar() {
 
         <li className="mb-1">
           <Link
-            className=" rounded px-4 py-2 text-sm font-semibold "
+            className=" rounded px-4 py-2 text-sm font-semibold text-gray-100 hover:bg-gray-100 hover:text-cyan-900 "
             href="/#subjects"
           >
             Subjects
           </Link>
         </li>
         <li className="mb-1">
-          <Link className=" rounded px-4 py-2 text-sm font-semibold " href="#">
+          <Link
+            className=" rounded px-4 py-2 text-sm font-semibold text-gray-100 hover:bg-gray-100 hover:text-cyan-900 "
+            href="/settings"
+          >
             Settings
           </Link>
         </li>
@@ -72,7 +78,7 @@ export default function Navbar() {
         {/* <Link href={"/notifications"}>
           <IoMdNotificationsOutline className="cursor-pointer text-2xl" />
         </Link> */}
-        <Notifications />
+        {session && <Notifications />}
 
         <div className="dropdown dropdown-end hidden md:block">
           <div tabIndex={0} className="avatar placeholder cursor-pointer">
@@ -104,7 +110,6 @@ export default function Navbar() {
             </div>
           </div>
         </div>
-
         <div className="flex-none md:hidden">
           <label
             htmlFor="my-drawer-3"

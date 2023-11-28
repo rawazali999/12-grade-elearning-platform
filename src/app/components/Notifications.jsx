@@ -1,3 +1,4 @@
+"use client";
 import MagicBell, {
   FloatingNotificationInbox,
 } from "@magicbell/magicbell-react";
