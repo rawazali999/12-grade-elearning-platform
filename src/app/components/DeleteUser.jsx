@@ -11,22 +11,22 @@ export default function DeleteUser() {
   const [enteredEmail, setEnteredEmail] = useState("");
   const { data: session } = useSession();
 
-  const handleDelete = async () => {
-    const userId = await getUserId(session?.user?.email);
-    if (enteredEmail === session.user.email) {
-      // Delete user from database
-      await fetch("/api/deleteUser", {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ userId: userId }),
-      });
+//   const handleDelete = async () => {
+//     const userId = await getUserId(session?.user?.email);
+//     if (enteredEmail === session.user.email) {
+//       // Delete user from database
+//       await fetch("/api/deleteUser", {
+//         method: "DELETE",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({ userId: userId }),
+//       });
 
-      // Sign out user and redirect to login page
-      signOut({ callbackUrl: "/login" });
-    }
-  };
+//       // Sign out user and redirect to login page
+//       signOut({ callbackUrl: "/login" });
+//     }
+//   };
   return (
     <div className="mt-8">
       <p className="font-medium text-red-500">Danger Zone</p>

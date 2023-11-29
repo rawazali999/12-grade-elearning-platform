@@ -8,6 +8,8 @@ const nextConfig = {
     MAGICBELL_API_KEY: process.env.MAGICBELL_API_KEY,
     MAGICBELL_API_SECRET: process.env.MAGICBELL_API_SECRET,
   },
+  productionBrowserSourceMaps: true,
+  swcMinify: false,
 };
 
 module.exports = nextConfig;

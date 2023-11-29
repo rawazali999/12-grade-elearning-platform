@@ -154,6 +154,7 @@ const Quiz = ({ data }) => {
         <input
           type="number"
           min="1"
+          max={data[currentSection]?.questions.length}
           value={numQuestions || ""}
           onChange={handleNumQuestionsChange}
           className="w-52 rounded-sm border border-cyan-950 bg-slate-100 px-2 py-1 text-slate-950"

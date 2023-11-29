@@ -45,12 +45,12 @@ export const authOptions = {
     jwt({ token, trigger, session }) {
       if (trigger === "update" && session?.name && session?.email) {
         // Note, that `session` can be any arbitrary object, remember to validate it!
-        token.name = session.name
-        token.email = session.email
+        token.name = session.name;
+        token.email = session.email;
       }
-      return token
-    }
-  }
+      return token;
+    },
+  },
 };
 
 const handler = NextAuth(authOptions);
