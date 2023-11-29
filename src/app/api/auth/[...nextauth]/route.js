@@ -40,6 +40,17 @@ export const authOptions = {
   pages: {
     signIn: "/",
   },
+  callbacks: {
+    // Using the `...rest` parameter to be able to narrow down the type based on `trigger`
+    jwt({ token, trigger, session }) {
+      if (trigger === "update" && session?.name && session?.email) {
+        // Note, that `session` can be any arbitrary object, remember to validate it!
+        token.name = session.name
+        token.email = session.email
+      }
+      return token
+    }
+  }
 };
 
 const handler = NextAuth(authOptions);

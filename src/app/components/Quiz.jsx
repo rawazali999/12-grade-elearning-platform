@@ -212,11 +212,12 @@ const Quiz = ({ data }) => {
           choices: question.choices,
           isCorrect,
           userAnswerIndex, // Include userAnswerIndex in the result
+          correctAnswerIndex: question.correctAnswerIndex, // Include correctAnswerIndex in the result
         };
       });
 
     return (
-      <div className="flex  flex-col items-center rounded-lg p-6 shadow-md">
+      <div className="flex flex-col items-center rounded-lg p-6 shadow-md">
         <h2 className="mb-4 text-2xl font-bold">Quiz Result</h2>
         <p className="text-lg">
           Your score: {score} / {numQuestions}
@@ -224,7 +225,7 @@ const Quiz = ({ data }) => {
         <p className="text-lg">
           Time taken: {quizTimeInMinutes.toFixed(2)} minutes
         </p>
-        <div className=" m-2 w-full flex-col justify-center p-2 sm:w-1/2">
+        <div className="m-2 w-full flex-col justify-center p-2 sm:w-1/2">
           {resultDetails.map((result, index) => (
             <div key={index} className="my-4 gap-4 rounded-lg border p-4">
               <p className="text-md mb-1 font-medium">Question {index + 1}:</p>
@@ -233,7 +234,7 @@ const Quiz = ({ data }) => {
                 {result.choices.map((choice, choiceIndex) => (
                   <div
                     key={choiceIndex}
-                    className={`my-2  rounded px-4 py-2 ${
+                    className={`my-2 rounded px-4 py-2 ${
                       isQuizCompleted
                         ? choiceIndex === result.correctAnswerIndex
                           ? "bg-green-500 text-white"

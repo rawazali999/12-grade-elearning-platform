@@ -7,15 +7,15 @@ export async function PUT(req) {
     db = await connectMongoDB();
     console.log(db);
   }
-  const { userEmail, id, subject, lesson } = await req.json();
-  // console.log("Request body:", userEmail, id, subject, lesson);
-  const progress = await Progress.findOne({ userEmail, id, subject });
+  const { userId, courseId, subject, lesson } = await req.json();
+  // console.log("Request body:", userId, id, subject, lesson);
+  const progress = await Progress.findOne({ userId, courseId, subject });
   // console.log("Progress found for update:", progress);
   const lessonIndex = progress.lessons.findIndex((l) => l.id == lesson.id);
   console.log("Lesson index:", lessonIndex);
 
   await Progress.updateOne(
-    { userEmail: progress.userEmail, id: progress.id, subject: subject },
+    { userId: progress.userId, courseId: progress.courseId, subject: subject },
     { $set: { [`lessons.${lessonIndex}.checked`]: lesson.checked } },
   );
 

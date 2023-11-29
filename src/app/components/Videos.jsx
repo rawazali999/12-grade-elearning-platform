@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import getOrCreateProgress from "@/lib/getOrCreateProgress";
 import Spinner from "@components/Spinner";
 import sendNotification from "@/lib/sendNotification";
+import getUserId from "@/lib/getUserId";
 
 export default function Videos({ subject, course }) {
   const [lessons, setLessons] = useState([]);
@@ -19,9 +20,9 @@ export default function Videos({ subject, course }) {
 
     async function fetchData() {
       setIsLoading(true);
-
+      const userId = await getUserId(session?.user?.email);
       const progress = await getOrCreateProgress(
-        session?.user?.email,
+        userId,
         course?.id,
         subject?.title,
         course?.lessons,
@@ -55,6 +56,25 @@ export default function Videos({ subject, course }) {
       (newCheckedCount / lessons.length) * 100,
     );
     setProgressValue(newProgressValue);
+
+    try {
+      if (session && subject) {
+        const userId = await getUserId(session?.user?.email);
+
+        await fetch(`${process.env.NEXTAUTH_URL}/api/progress/update`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userId: userId,
+            courseId: course?.id,
+            subject: subject?.title,
+            lesson: { id, checked },
+          }),
+        });
+      }
+    } catch (err) {}
     if (newProgressValue === 100) {
       await sendNotification(
         `Congratulations 👏🎉 `,
@@ -62,24 +82,6 @@ export default function Videos({ subject, course }) {
         session?.user?.email,
       );
     }
-
-    try {
-      if (session && subject) {
-        await fetch(`${process.env.NEXTAUTH_URL}/api/progress/update`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            userEmail: session?.user?.email,
-            id: course?.id,
-            subject: subject?.title,
-            lesson: { id, checked },
-          }),
-        });
-      }
-    } catch (err) {}
-
     setIsLoading(false);
   };
 

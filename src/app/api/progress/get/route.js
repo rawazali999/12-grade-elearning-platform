@@ -5,18 +5,18 @@ import { connectMongoDB } from "@lib/mongodb";
 export async function POST(req) {
   try {
     await connectMongoDB();
-    const { userEmail, subject, id, lessons } = await req.json();
-
+    const { userId, subject, courseId, lessons } = await req.json();
+    // console.log("Request body:", userId, subject, courseId , lessons);
     // Check if progress exists
-    let progress = await Progress.findOne({ userEmail, subject, id });
+    let progress = await Progress.findOne({ userId, subject, courseId});
 
     if (progress) {
       return NextResponse.json(progress.lessons);
       // If progress doesn't exist, create it asynchronously
     } else {
       const progress = await Progress.create({
-        userEmail,
-        id,
+        userId,
+        courseId,
         subject,
         lessons,
       });

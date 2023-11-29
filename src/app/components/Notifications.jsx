@@ -4,14 +4,28 @@ import MagicBell, {
 } from "@magicbell/magicbell-react";
 import { useSession } from "next-auth/react";
 import { IoMdNotificationsOutline } from "react-icons/io";
+import getUserId from "@/lib/getUserId";
+import { useEffect, useState } from "react";
 
 export default function Notifications() {
   const { data: session } = useSession();
+  const [userId, setUserId] = useState(null);
+  useEffect(() => {
+    async function fetchData() {
+      const userId = await getUserId(session?.user?.email);
+      console.log("this is user id : " + userId);
+      setUserId(userId);
+    }
+    fetchData();
+  }, [session]);
 
   return (
-    <MagicBell
+    userId && (
+      <MagicBell
       apiKey={process.env.MAGICBELL_API_KEY}
-      userEmail={session?.user?.email}
+      headers={{ "X-MAGICBELL-USER-EXTERNAL-ID": userId }}
+      // userEmail={session?.user?.email}
+      userExternalId={userId}
       theme={theme}
       locale="en"
       BellIcon={<IoMdNotificationsOutline />}
@@ -20,6 +34,7 @@ export default function Notifications() {
         <FloatingNotificationInbox width={400} height={500} {...props} />
       )}
     </MagicBell>
+    )
   );
 }
 

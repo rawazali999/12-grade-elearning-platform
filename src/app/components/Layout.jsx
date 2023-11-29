@@ -11,6 +11,7 @@ import { FaBook } from "react-icons/fa";
 import { IoSettingsSharp, IoHome } from "react-icons/io5";
 import Footer from "@components/Footer";
 import Navbar from "@components/Navbar";
+import Header from "./Header";
 
 export default function Layout({ children }) {
   const handleSignOut = () => {
@@ -22,7 +23,7 @@ export default function Layout({ children }) {
     <>
       <div className="drawer">
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col">
+        <div className="drawer-content  flex flex-col">
           {/* this children refers to all content between navbar and footer */}
           <Navbar />
           <main>{children}</main>
@@ -37,16 +38,7 @@ export default function Layout({ children }) {
             className="drawer-overlay"
           ></label>
 
-          <div className="menu min-h-full w-72 bg-slate-200 p-4 dark:bg-gray-800 ">
-            <Link
-              className="sm:text-md mb-4 flex items-center gap-2  text-sm font-semibold "
-              href="/"
-            >
-              <IoMdSchool className="text-5xl" />
-              <p>12 Grade E-learning Platform</p>
-            </Link>
-            <hr className="bg-black" />
-
+          <div className="menu z-50 flex min-h-full w-72 flex-col justify-evenly  bg-slate-200 p-4 dark:bg-gray-800">
             <UserInfo />
             <div className="mx-2 my-4 ">
               <ul>

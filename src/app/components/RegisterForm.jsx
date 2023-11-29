@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import sendNotification from "@lib/sendNotification";
+import getUserId from "@/lib/getUserId";
 
 export default function RegisterForm() {
   const [name, setName] = useState("");
@@ -23,13 +24,7 @@ export default function RegisterForm() {
     }
 
     try {
-      const resUserExists = await fetch("api/userExists", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      });
+      const resUserExists = await getUserId(email);
 
       const { user } = await resUserExists.json();
 

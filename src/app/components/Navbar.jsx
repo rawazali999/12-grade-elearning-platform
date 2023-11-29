@@ -8,8 +8,8 @@ import { redirect } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { TbLogout } from "react-icons/tb";
 import { IoMenu } from "react-icons/io5";
-import Image from "next/image";
 import Notifications from "@components/Notifications";
+import Header from "@components/Header";
 
 export default function Navbar() {
   const { data: session } = useSession();
@@ -19,22 +19,9 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 z-10  flex w-full items-center justify-between bg-cyan-900 p-3 text-white">
+    <nav className="fixed top-0   flex w-full items-center justify-between bg-cyan-900 p-3 text-white">
       {/* Logo */}
-      <Link
-        className="text-md flex items-center gap-1  font-semibold text-white "
-        href="/"
-      >
-        {/* <IoMdSchool className="text-5xl text-white" /> */}
-        <Image
-          src={"/images/logo.png"}
-          alt="logo"
-          className=" h-auto w-auto "
-          width={40}
-          height={40}
-        />
-        <p>12th Grade Platform</p>
-      </Link>
+      <Header />
 
       {/* Nav Links */}
       <ul className=" mx-auto hidden space-x-12 px-4 font-semibold  md:flex">
