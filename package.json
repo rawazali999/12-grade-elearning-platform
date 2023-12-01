@@ -12,6 +12,7 @@
     "@magicbell/core": "^5.0.12",
     "@magicbell/magicbell-react": "^10.9.9",
     "@magicbell/react-headless": "^4.4.7",
+    "@pusher/push-notifications-web": "^1.1.0",
     "axios": "^1.6.2",
     "bcryptjs": "^2.4.3",
     "bufferutil": "^4.0.8",

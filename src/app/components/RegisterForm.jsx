@@ -55,6 +55,7 @@ export default function RegisterForm() {
           email,
           password,
           redirect: false,
+          callbackUrl: "/",
         });
 
         if (res.error) {
@@ -67,6 +68,7 @@ export default function RegisterForm() {
           "We are glad to have you here. You can now start learning with us.",
           email,
         );
+        
       } else {
         console.log("User registration failed.");
       }
@@ -93,7 +95,7 @@ export default function RegisterForm() {
             />
             <input
               className=" w-72 rounded-md  border border-gray-300 bg-slate-100  p-2 placeholder-gray-500 focus:outline-cyan-700"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value.toLowerCase())}
               type="email"
               placeholder="Email"
             />

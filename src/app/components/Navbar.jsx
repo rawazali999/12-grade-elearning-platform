@@ -13,13 +13,9 @@ import Header from "@components/Header";
 
 export default function Navbar() {
   const { data: session } = useSession();
-  const handleSignOut = () => {
-    signOut();
-    redirect("/login");
-  };
 
   return (
-    <nav className="fixed top-0   flex w-full items-center justify-between bg-cyan-900 p-3 text-white">
+    <nav className="fixed top-0 z-10  flex w-full items-center justify-between bg-cyan-900 p-3 text-white">
       {/* Logo */}
       <Header />
 
@@ -89,7 +85,9 @@ export default function Navbar() {
               <UserInfo />
               <button
                 className="text-md flex w-full items-center justify-center gap-2  bg-cyan-900 px-2  py-1 text-center"
-                onClick={handleSignOut}
+                onClick={() => {
+                  signOut({ callbackUrl: "/login" });
+                }}
               >
                 Sign out
                 <TbLogout />

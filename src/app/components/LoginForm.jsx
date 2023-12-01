@@ -20,13 +20,14 @@ export default function LoginForm() {
         email,
         password,
         redirect: false,
+        callbackUrl: "/",
       });
 
       if (res.error) {
         setError("Invalid Credentials");
         return;
       }
-
+      console.log("logged in successfully");
       router.replace("/");
     } catch (error) {
       console.log(error);
@@ -45,7 +46,7 @@ export default function LoginForm() {
           <form onSubmit={handleSubmit} className="flex flex-col gap-3">
             <input
               className=" w-72 rounded-md border border-gray-300 bg-slate-100  p-2 placeholder-gray-500 focus:outline-cyan-600 "
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value.toLowerCase())}
               type="email"
               placeholder="Email"
               autoComplete="email"

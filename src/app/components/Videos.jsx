@@ -6,6 +6,7 @@ import getOrCreateProgress from "@/lib/getOrCreateProgress";
 import Spinner from "@components/Spinner";
 import sendNotification from "@/lib/sendNotification";
 import getUserId from "@/lib/getUserId";
+import sendEmail from "@/lib/sendEmail";
 
 export default function Videos({ subject, course }) {
   const [lessons, setLessons] = useState([]);
@@ -113,7 +114,7 @@ export default function Videos({ subject, course }) {
               <Spinner />
             ) : (
               <div
-                className="radial-progress"
+                className="radial-progress "
                 style={{ "--value": `${progressValue}` }}
               >
                 {progressValue}%

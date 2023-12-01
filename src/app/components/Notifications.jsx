@@ -13,7 +13,7 @@ export default function Notifications() {
   useEffect(() => {
     async function fetchData() {
       const userId = await getUserId(session?.user?.email);
-      console.log("this is user id : " + userId);
+      // console.log("this is user id : " + userId);
       setUserId(userId);
     }
     fetchData();
@@ -23,7 +23,7 @@ export default function Notifications() {
     userId && (
       <MagicBell
       apiKey={process.env.MAGICBELL_API_KEY}
-      headers={{ "X-MAGICBELL-USER-EXTERNAL-ID": userId }}
+      // headers={{ "X-MAGICBELL-USER-EXTERNAL-ID": userId }}
       // userEmail={session?.user?.email}
       userExternalId={userId}
       theme={theme}

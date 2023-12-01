@@ -5,20 +5,13 @@ import { signOut } from "next-auth/react";
 import UserInfo from "./UserInfo";
 import { redirect } from "next/navigation";
 import { TbLogout } from "react-icons/tb";
-import { IoMdSchool } from "react-icons/io";
 import { MdQuiz } from "react-icons/md";
 import { FaBook } from "react-icons/fa";
 import { IoSettingsSharp, IoHome } from "react-icons/io5";
 import Footer from "@components/Footer";
 import Navbar from "@components/Navbar";
-import Header from "./Header";
 
 export default function Layout({ children }) {
-  const handleSignOut = () => {
-    signOut();
-    redirect("/login");
-  };
-
   return (
     <>
       <div className="drawer">
@@ -31,14 +24,14 @@ export default function Layout({ children }) {
           <Footer />
         </div>
 
-        <div className="drawer-side ">
+        <div className="drawer-side z-20 ">
           <label
             htmlFor="my-drawer-3"
             aria-label="close sidebar"
             className="drawer-overlay"
           ></label>
 
-          <div className="menu z-50 flex min-h-full w-72 flex-col justify-evenly  bg-slate-200 p-4 dark:bg-gray-800">
+          <div className="menu  flex min-h-full w-72 flex-col justify-evenly  bg-slate-200 p-4 dark:bg-gray-800">
             <UserInfo />
             <div className="mx-2 my-4 ">
               <ul>
@@ -83,7 +76,9 @@ export default function Layout({ children }) {
             </div>
             <button
               className=" mb-3 flex items-center  justify-center gap-2 rounded bg-cyan-900  px-2  py-4 text-center text-xl font-bold text-gray-100 hover:bg-gray-100  hover:text-cyan-900 "
-              onClick={handleSignOut}
+              onClick={() => {
+                signOut({ callbackUrl: "/login" });
+              }}
             >
               Sign out
               <TbLogout />
