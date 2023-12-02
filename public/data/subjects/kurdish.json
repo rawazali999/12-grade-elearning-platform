@@ -3,7 +3,12 @@
   "title": "kurdish",
   "original_title": "زمان و ئەدەبی کوردی",
   "imageUrl": "kurdish.jpg",
-  "book": "https://drive.google.com/file/d/10uVFOkUN5ANtRyW1uyBhOBI0EtYEnDvQ/view",
+  "books": [
+    {
+      "title": "زمان و ئەدەبی کوردی ",
+      "src": "https://drive.google.com/file/d/10uVFOkUN5ANtRyW1uyBhOBI0EtYEnDvQ/view"
+    }
+  ],
   "course1": {
     "id": 12345,
     "kurdish_title": "م. سالم محمد کوردی پۆلی ١٢ ڕێزمان",

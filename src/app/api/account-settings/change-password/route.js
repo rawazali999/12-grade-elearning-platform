@@ -1,18 +1,22 @@
 import { NextResponse } from "next/server";
 import { connectMongoDB } from "@lib/mongodb";
 import User from "@models/user";
-let db;
+import bcrypt from "bcryptjs";
+
 export async function PUT(req) {
-  if (!db) {
-    db = await connectMongoDB();
-  }
+  await connectMongoDB();
 
-  const { userEmail } = await req.json();
+  const { userId, newPassword } = await req.json();
+  const hashedPassword = await bcrypt.hash(newPassword, 10);
 
-  const user = await User.findOneAndUpdate({ email: userEmail });
+  // Update the user's password in the database
+  const user = await User.findOneAndUpdate(
+    { _id: userId },
+    { password: hashedPassword },
+    { new: true },
+  );
   if (!user) {
-    return NextResponse.json({ error: "Password found" });
+    return NextResponse.json({ error: "User not found" });
   }
-
   return NextResponse.json({ message: "Password updated" });
 }

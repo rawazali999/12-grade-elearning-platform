@@ -3,7 +3,17 @@
   "title": "physics",
   "original_title": "زانست بۆ هەمووان - فیزیا",
   "imageUrl": "physics.jpg",
-  "book": "https://drive.google.com/file/d/1iKIOrRmSr9nV5RuCSLkAPCX5mK_I8z_s/view",
+  "books": [
+    {
+      "title": "زانست بۆ هەمووان - فیزیا",
+      "src": "https://drive.google.com/file/d/1iKIOrRmSr9nV5RuCSLkAPCX5mK_I8z_s/view"
+    } ,
+    {
+      "title": "کتیبی ڕاهێنان",
+      "src": "https://drive.google.com/file/d/1iKIOrRmSr9nV5RuCSLkAPCX5mK_I8z_s/view"
+    }
+  
+  ],
   "course1": {
     "id": 12345,
     "kurdish_title": "فیزیا پۆلی12ی زانستی | م. کارزان  ",

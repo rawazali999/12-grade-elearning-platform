@@ -3,7 +3,17 @@
   "title": "sunrise12",
   "original_title": " Sunrise 12 ",
   "imageUrl": "sunrise12.jpg",
-  "book": "https://drive.google.com/file/d/1hIDeg1pQkKPy7x6DLadccV8NFqYrVl0-/view",
+  "books": [
+    {
+      "title": "student book",
+      "src": "https://drive.google.com/file/d/1hIDeg1pQkKPy7x6DLadccV8NFqYrVl0-/view"
+    } ,
+    {
+      "title": "activity book",
+      "src": "https://drive.google.com/file/d/1hIDeg1pQkKPy7x6DLadccV8NFqYrVl0-/view"
+    }
+  
+  ],
   "course1": {
     "id": 12345,
     "kurdish_title": "بیرکاری پۆلی12ی زانستی | م. وەرزێر حەسەن (هەرێم) ",

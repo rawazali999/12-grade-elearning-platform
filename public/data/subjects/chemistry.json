@@ -3,7 +3,16 @@
   "title": "chemistry",
   "original_title": "زانست بۆ هەمووان - کیمیا",
   "imageUrl": "chemistry.jpg",
-  "book": "https://drive.google.com/file/d/1MeEl4SDzqXPCAnxn6G3pqzOlvlSfuRqu/view",
+  "books": [
+    {
+      "title": "زانست بۆ هەمووان - زیندەزانی ",
+      "src": "https://drive.google.com/file/d/1MeEl4SDzqXPCAnxn6G3pqzOlvlSfuRqu/view"
+    },
+    {
+      "title": "کتێبی ڕاهێنان",
+      "src": "https://drive.google.com/file/d/1MeEl4SDzqXPCAnxn6G3pqzOlvlSfuRqu/view"
+    }
+  ],
   "course1": {
     "id": 12345,
     "kurdish_title": "بیرکاری پۆلی12ی زانستی | م. وەرزێر حەسەن (هەرێم) ",

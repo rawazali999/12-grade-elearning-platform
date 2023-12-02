@@ -3,7 +3,12 @@
   "title": "islamic-education",
   "original_title": "پەروەردەی ئیسلامی",
   "imageUrl": "islamic_education.jpg",
-  "book": "https://drive.google.com/file/d/1Z7XCRXeh6CGT2z8BeuMDUCptQA7fcS7z/view",
+  "books": [
+    {
+      "title": "پەروەردەی ئیسلامی",
+      "src": "https://drive.google.com/file/d/1Z7XCRXeh6CGT2z8BeuMDUCptQA7fcS7z/view"
+    }
+  ],
   "course1": {
     "id": 12345,
     "kurdish_title": " پەروەردەی ئیسلامی - مامۆستا محمد سەرۆکی",

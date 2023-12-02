@@ -4,6 +4,17 @@
   "original_title": " بیرکاری بۆ هەموان - زانستی ",
   "imageUrl": "scientific_math.jpg",
   "book": "https://drive.google.com/file/d/1Z7XCRXeh6CGT2z8BeuMDUCptQA7fcS7z/view",
+  "books": [
+    {
+      "title": "بیرکاری بۆ هەموان - زانستی",
+      "src": "https://drive.google.com/file/d/1Z7XCRXeh6CGT2z8BeuMDUCptQA7fcS7z/view"
+    } ,
+    {
+      "title": "کتیبی ڕاهێنان",
+      "src": "https://drive.google.com/file/d/1iKIOrRmSr9nV5RuCSLkAPCX5mK_I8z_s/view"
+    }
+  
+  ],
   "course1": {
     "id": 12345,
     "kurdish_title": "بیرکاری پۆلی12ی زانستی | م. وەرزێر حەسەن (هەرێم) ",

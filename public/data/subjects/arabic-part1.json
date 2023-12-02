@@ -3,7 +3,12 @@
   "title": "arabic-part1",
   "original_title": "كتاب اللغة العربية  الجزء الأول",
   "imageUrl": "arabic_part1.jpg",
-  "book": "https://drive.google.com/file/d/1Z7XCRXeh6CGT2z8BeuMDUCptQA7fcS7z/view",
+  "books": [
+    {
+      "title": "كتاب اللغة العربية  الجزء الأول",
+      "src": "https://drive.google.com/file/d/1Z7XCRXeh6CGT2z8BeuMDUCptQA7fcS7z/view"
+    }
+  ],
   "course1": {
     "id": 12345,
     "kurdish_title": "اللغة العربية  | م. وەرزێر حەسەن (هەرێم) ",

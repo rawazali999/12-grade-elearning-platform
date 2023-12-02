@@ -3,7 +3,17 @@
   "title": "biology",
   "original_title": "زانست بۆ هەمووان - زیندەزانی ",
   "imageUrl": "biology.jpg",
-  "book": "https://drive.google.com/file/d/16iksU6mArrvvbrAPBkEiM4CUGcR6hweh/view",
+  "books": [
+    {
+      "title": "زانست بۆ هەمووان - زیندەزانی ",
+      "src": "https://drive.google.com/file/d/16iksU6mArrvvbrAPBkEiM4CUGcR6hweh/view"
+    },
+    {
+      "title": "کتێبی ڕاهێنان",
+      "src": "https://drive.google.com/file/d/16iksU6mArrvvbrAPBkEiM4CUGcR6hweh/view"
+    }
+  ],
+  
   "course1": {
     "id": 12345,
     "kurdish_title": "بیرکاری پۆلی12ی زانستی | م. وەرزێر حەسەن (هەرێم) ",

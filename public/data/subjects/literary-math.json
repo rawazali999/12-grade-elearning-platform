@@ -3,7 +3,17 @@
   "title": "literary-math",
   "original_title": "بیرکاری بۆ هەموان - ئەدەبی",
   "imageUrl": "literary_math.jpg",
-  "book": "https://drive.google.com/file/d/1Z7XCRXeh6CGT2z8BeuMDUCptQA7fcS7z/view",
+  "books": [
+    {
+      "title": "بیرکاری بۆ هەموان - ئەدەبی",
+      "src": "https://drive.google.com/file/d/16iksU6mArrvvbrAPBkEiM4CUGcR6hweh/view"
+    } ,
+    {
+      "title": "کتیبی ڕاهێنان",
+      "src": "https://drive.google.com/file/d/16iksU6mArrvvbrAPBkEiM4CUGcR6hweh/view"
+    }
+  
+  ],
   "course1": {
     "id": 12345,
     "kurdish_title": "بیرکاری پۆلی12ی زانستی | م. وەرزێر حەسەن (هەرێم) ",
