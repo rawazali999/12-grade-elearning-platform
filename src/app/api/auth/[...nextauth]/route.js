@@ -3,6 +3,7 @@ import User from "@/models/user";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
+// import GoogleProvider from "next-auth/providers/google";
 
 export const authOptions = {
   providers: [
@@ -32,6 +33,10 @@ export const authOptions = {
         }
       },
     }),
+    // GoogleProvider({
+    //   clientId: process.env.GOOGLE_CLIENT_ID,
+    //   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    // }),
   ],
   session: {
     strategy: "jwt",
@@ -41,6 +46,27 @@ export const authOptions = {
     signIn: "/",
   },
   callbacks: {
+    // async signIn({ user, account }) {
+    //   if (account.provider === "google") {
+    //     try {
+    //       // Update the user object if it exists in the database
+    //       const existingUser = await User.findOne({ email: user.email });
+
+    //       if (!existingUser) {
+    //         await User.create({
+    //           name: user.name,
+    //           email: user.email,
+    //         });
+
+    //         // Return the session
+    //         return true;
+    //       }
+    //       return true;
+    //     } catch (error) {
+    //       console.error(error);
+    //     }
+    //   }
+    // },
     // Using the `...rest` parameter to be able to narrow down the type based on `trigger`
     jwt({ token, trigger, session }) {
       if (trigger === "update" && session?.name && session?.email) {

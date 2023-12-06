@@ -1,17 +1,16 @@
 "use client";
-
-import Link from "next/link";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
+import Link from "next/link";
 import sendNotification from "@lib/sendNotification";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function RegisterForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
   const router = useRouter();
 
   const handleSubmit = async (e) => {
@@ -37,6 +36,7 @@ export default function RegisterForm() {
         setError("User already exists.");
         return;
       }
+
       // register user
       const res = await fetch("api/register", {
         method: "POST",
@@ -49,6 +49,7 @@ export default function RegisterForm() {
           password,
         }),
       });
+
       // if registration is successful, sign in user
       if (res.ok) {
         const res = await signIn("credentials", {
@@ -62,13 +63,14 @@ export default function RegisterForm() {
           setError("Invalid Credentials");
           return;
         }
+
         router.replace("/");
+
         await sendNotification(
           `Welcome ${name} to 12th Grade Platform`,
           "We are glad to have you here. You can now start learning with us.",
           email,
         );
-        
       } else {
         console.log("User registration failed.");
       }
@@ -78,46 +80,80 @@ export default function RegisterForm() {
   };
 
   return (
-    <div className="grid h-screen place-items-center bg-slate-300 text-gray-950">
-      <div className="">
-        <h1 className="m-4 rounded-md bg-transparent text-center text-xl font-semibold">
-          12-Grade E-Learning Platform
-        </h1>
-        <div className="rounded-lg border-t-4 border-cyan-700 bg-slate-50 p-5 shadow-lg">
-          <h1 className="my-4 text-center text-xl font-bold">Register</h1>
+    <div className=" flex  h-screen items-center justify-center  bg-gray-100">
+      <div className="mx-auto  w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-md">
+        <div className="px-6 py-4">
+          <div className="mx-auto flex justify-center">
+            <Link
+              className="text-md flex items-center gap-1  font-semibold   "
+              href="/"
+            >
+              {/* <IoMdSchool className="text-5xl text-white" /> */}
+              <Image
+                src={"/images/logo.png"}
+                alt="logo"
+                className=" h-auto w-auto "
+                width={40}
+                height={40}
+              />
+              <p className="text-xl text-black">12th Grade Platform</p>
+            </Link>
+          </div>
 
-          <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-            <input
-              className=" w-72 rounded-md  border border-gray-300 bg-slate-100  p-2 placeholder-gray-500 focus:outline-cyan-700"
-              onChange={(e) => setName(e.target.value)}
-              type="text"
-              placeholder="Username"
-            />
-            <input
-              className=" w-72 rounded-md  border border-gray-300 bg-slate-100  p-2 placeholder-gray-500 focus:outline-cyan-700"
-              onChange={(e) => setEmail(e.target.value.toLowerCase())}
-              type="email"
-              placeholder="Email"
-            />
-            <input
-              className=" w-72 rounded-md  border border-gray-300 bg-slate-100  p-2 placeholder-gray-500 focus:outline-cyan-700"
-              onChange={(e) => setPassword(e.target.value)}
-              type="password"
-              placeholder="Password"
-            />
-            <button className="cursor-pointer rounded-md bg-cyan-700 px-6 py-2 font-bold text-white">
-              Sign up
-            </button>
+          <p className="mt-1 text-center text-gray-500">
+            Register to start learning
+          </p>
+          <form onSubmit={handleSubmit}>
+            {/* Include the username field */}
+            <div className="mt-4 w-full">
+              <input
+                className="mt-2 block w-full rounded-lg border bg-white px-4 py-2 text-gray-700 placeholder-gray-500 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
+                type="text"
+                placeholder="Username"
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            {/* Include the email field */}
+            <div className="mt-4 w-full">
+              <input
+                className="mt-2 block w-full rounded-lg border bg-white px-4 py-2 text-gray-700 placeholder-gray-500 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
+                type="email"
+                placeholder="Email Address"
+                onChange={(e) => setEmail(e.target.value.toLowerCase())}
+              />
+            </div>
+            {/* Include the password field */}
+            <div className="mt-4 w-full">
+              <input
+                className="mt-2 block w-full rounded-lg border bg-white px-4 py-2 text-gray-700 placeholder-gray-500 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
+                type="password"
+                placeholder="Password"
+                minLength="8"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            {/* Error section */}
             {error && (
               <div className="mt-2 w-fit rounded-md bg-red-500 px-3 py-1 text-sm text-white">
                 {error}
               </div>
             )}
 
-            <Link className="mt-3 text-center text-sm" href={"/login"}>
-              Already have an account? <span className="underline">Login</span>
-            </Link>
+            <button className="my-4 w-full transform rounded-md  bg-blue-500 px-6 py-2 text-sm font-medium capitalize tracking-wide text-white transition-colors duration-300 hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+              Sign Up
+            </button>
           </form>
+        </div>
+        <div className="flex items-center justify-center bg-gray-50 py-4 text-center">
+          <span className="text-sm text-gray-600">
+            Already have an account?{" "}
+          </span>
+          <Link
+            className="mx-2 text-sm font-bold text-blue-500 hover:underline"
+            href="/login"
+          >
+            Login
+          </Link>
         </div>
       </div>
     </div>

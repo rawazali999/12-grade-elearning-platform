@@ -61,7 +61,7 @@ export default function NameAndEmailUpdate() {
           });
           sendNotification(
             "Account Information Updated",
-            "Your account information has been updated.",
+            `Your account information has been updated to ${name} and ${email}`,
             session?.user?.email,
           );
           setMessage("Account name and email updated");

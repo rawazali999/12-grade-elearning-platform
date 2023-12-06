@@ -11,30 +11,30 @@
   ],
   "course1": {
     "id": 12345,
-    "kurdish_title": "اللغة العربية  | م. وەرزێر حەسەن (هەرێم) ",
+    "kurdish_title": "اللغة العربية  | م. ئامانج ئومێد عەرەبی پۆلی ١٢ وەحدەی 1",
     "lessons": [
       {
         "id": 1,
-        "src": "https://www.youtube.com/embed/LHwmUklujrI",
-        "title": "بەشی 1 وانەی 2-1",
+        "src": "https://www.youtube.com/embed/jJcisFLCEVw",
+        "title": "المفعول لأجله",
         "checked": false
       },
       {
         "id": 2,
-        "src": "https://www.youtube.com/embed/Wy_f_OQLB20",
-        "title": "بەشی 1 وانەی 3 ",
+        "src": "https://www.youtube.com/embed/VsPEh72o2v0",
+        "title": "المفعول المطلق",
         "checked": false
       },
       {
         "id": 3,
-        "src": "https://www.youtube.com/embed/dWyUYTXSV0E",
-        "title": "بابه‌تی لایڤ به‌شی یه‌كه‌م",
+        "src": "https://www.youtube.com/embed/jWi6lbCOxow",
+        "title": "١- المستثنی",
         "checked": false
       },
       {
         "id": 4,
-        "src": "https://www.youtube.com/embed/0xEd0315310",
-        "title": "بەشی 2 وانەی 1 ",
+        "src": "https://www.youtube.com/embed/dsfSh2RdgTs",
+        "title": "٤- إتصال حرفي الجر ( من ) و ( عن ) بالاسم",
         "checked": false
       }
     ]

@@ -34,7 +34,6 @@ export default function ChangePassword() {
           },
           body: JSON.stringify({
             userId: userId,
-            confirmPassword: confirmPassword,
             newPassword: newPassword,
           }),
         });

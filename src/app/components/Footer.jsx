@@ -8,12 +8,11 @@ export default function Footer() {
       <div>
         {/* <IoMdSchool className="text-5xl text-white" /> */}
         <Header />
-
         <span className="text-sm text-gray-200">
           © 2023 All rights reserved.
         </span>
       </div>
-      <nav className=" text-sm font-semibold ">
+      <nav className=" text-sm font-semibold  ">
         <ul>
           <li>
             <Link
@@ -26,7 +25,7 @@ export default function Footer() {
           <li>
             <Link
               className="block rounded p-2   hover:bg-gray-100 hover:text-cyan-900"
-              href="#"
+              href="/quizzes"
             >
               Quizzes
             </Link>
@@ -43,7 +42,7 @@ export default function Footer() {
           <li>
             <Link
               className="block rounded p-2   hover:bg-gray-100 hover:text-cyan-900"
-              href="#"
+              href="/settings"
             >
               Settings
             </Link>

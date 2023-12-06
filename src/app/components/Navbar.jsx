@@ -10,6 +10,7 @@ import { TbLogout } from "react-icons/tb";
 import { IoMenu } from "react-icons/io5";
 import Notifications from "@components/Notifications";
 import Header from "@components/Header";
+import Image from "next/image";
 
 export default function Navbar() {
   const { data: session } = useSession();
@@ -63,19 +64,24 @@ export default function Navbar() {
         </Link> */}
         {session && <Notifications />}
 
-        <div className="dropdown dropdown-end hidden md:block">
+        <div className="dropdown-end dropdown hidden md:block">
           <div tabIndex={0} className="avatar placeholder cursor-pointer">
-            <div className=" w-8 rounded-full bg-black text-neutral-content">
-              <span className="text-sm font-medium text-white">
-                {
-                  // return first letter of the first and last name
-                  session?.user?.name
-                    ?.split(" ")
-                    .map((name) => name[0])
-                    .join("")
-                }
-              </span>
+            {/* {session?.user?.image ? (
+              <Image
+                src={session?.user?.image}
+                width={30}
+                alt="user image"
+                height={30}
+                className="rounded-full"
+              />
+            ) : ( */}
+            <div className=" text-md rounded-full bg-black  p-2 uppercase text-white ">
+              {session?.user?.name
+                ?.split(" ")
+                .map((name) => name[0])
+                .join("")}
             </div>
+            {/* )} */}
           </div>
           <div
             tabIndex={0}

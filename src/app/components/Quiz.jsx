@@ -1,7 +1,9 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
+import { useSession } from "next-auth/react";
+import sendNotification from "@/lib/sendNotification";
 
-const Quiz = ({ data }) => {
+const Quiz = ({ data, subject }) => {
   const [currentSection, setCurrentSection] = useState();
   const [quizDuration, setQuizDuration] = useState(5);
   const [numQuestions, setNumQuestions] = useState(3);
@@ -12,6 +14,7 @@ const Quiz = ({ data }) => {
   const [quizStartTime, setQuizStartTime] = useState(null);
   const [timeRemaining, setTimeRemaining] = useState(null);
   const [quizResult, setQuizResult] = useState(null); // Store the result details
+  const { data: session } = useSession();
 
   const timerRef = useRef(null);
 
@@ -126,11 +129,11 @@ const Quiz = ({ data }) => {
     <div className="mx-auto w-full rounded-lg border p-6 shadow-md md:w-2/3 lg:w-1/2">
       <h2 className="mb-4 text-2xl font-bold">Quiz Setup</h2>
       <div className="mb-4 flex justify-between px-4">
-        <label className="mr-4 text-lg">Select Section:</label>
+        <label className="mr-4 text-sm sm:text-lg">Select Section:</label>
         <select
           value={currentSection}
           onChange={(e) => handleSectionChange(e.target.value)}
-          className="w-52 rounded-sm border border-cyan-950 bg-slate-100 px-2 py-1 text-slate-950"
+          className="w-auto rounded-sm border border-cyan-950 bg-slate-100 px-2 py-1 text-slate-950"
         >
           {Object.keys(data).map((section) => (
             <option key={section} value={section}>
@@ -140,25 +143,32 @@ const Quiz = ({ data }) => {
         </select>
       </div>
       <div className="mb-4 flex justify-between px-4">
-        <label className="mr-4 text-lg">Select Duration (minutes):</label>
+        <label className="mr-4 text-sm sm:text-lg">
+          Select Duration (minutes):
+        </label>
         <input
           type="number"
           min="1"
           value={quizDuration || ""}
           onChange={handleDurationChange}
-          className="w-52 rounded-sm border border-cyan-950 bg-slate-100 px-2 py-1 text-slate-950"
+          className="h-8 w-32 rounded-sm border border-cyan-950 bg-slate-100 px-2 py-1 text-slate-950 sm:w-52"
         />
       </div>
       <div className="mb-4 flex justify-between px-4">
-        <label className="mr-4 text-lg">Number of Questions:</label>
-        <input
-          type="number"
-          min="1"
-          max={data[currentSection]?.questions.length}
+        <label className="mr-4 text-sm sm:text-lg">Number of Questions:</label>
+        <select
           value={numQuestions || ""}
           onChange={handleNumQuestionsChange}
-          className="w-52 rounded-sm border border-cyan-950 bg-slate-100 px-2 py-1 text-slate-950"
-        />
+          className="h-8 w-32 rounded-sm border border-cyan-950 bg-slate-100 px-2 py-1 text-slate-950 sm:w-52"
+        >
+          {[...Array(data[currentSection]?.questions.length).keys()].map(
+            (_, index) => (
+              <option key={index} value={index + 1}>
+                {index + 1}
+              </option>
+            ),
+          )}
+        </select>
       </div>
       <button
         className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-700 disabled:opacity-50"
@@ -175,13 +185,15 @@ const Quiz = ({ data }) => {
       data[currentSection]?.questions[currentQuestionIndex];
 
     return (
-      <div className="mx-auto w-full rounded-lg p-6 text-start shadow-md sm:w-2/3">
-        <h2 className="mb-4 text-2xl font-bold">{currentQuestion.question}</h2>
+      <div className="mx-auto w-full rounded-lg p-6 text-start shadow-md sm:w-1/2">
+        <h2 className="mb-4 text-center text-sm font-bold sm:text-2xl">
+          {currentQuestion.question}
+        </h2>
         <div className="space-y-2">
           {currentQuestion.choices.map((choice, index) => (
             <button
               key={index}
-              className={`block w-full rounded bg-blue-500 px-4 py-2 text-left text-white ${
+              className={`block w-full rounded bg-blue-400 px-4 py-2 text-left text-white ${
                 userAnswers[currentQuestionIndex] === index ? "bg-blue-900" : ""
               }`}
               onClick={() => handleAnswerSelect(index)}
@@ -216,6 +228,13 @@ const Quiz = ({ data }) => {
           correctAnswerIndex: question.correctAnswerIndex, // Include correctAnswerIndex in the result
         };
       });
+    let currentSectionTitle = data[currentSection]?.title;
+
+    sendNotification(
+      "Quiz Result",
+      `You quizzed on ${subject} from ${currentSectionTitle}. Your score : ${score} / ${numQuestions}`,
+      session?.user?.email,
+    );
 
     return (
       <div className="flex flex-col items-center rounded-lg p-6 shadow-md">
@@ -252,13 +271,15 @@ const Quiz = ({ data }) => {
                 ))}
               </div>
               <p
-                className={`mb-1 text-sm ${
-                  isQuizCompleted && result.isCorrect ? "text-green-500" : ""
+                className={`mb-1 text-lg ${
+                  isQuizCompleted && result.isCorrect
+                    ? "text-green-500"
+                    : "text-red-500"
                 }`}
               >
                 Your Answer: {result.userAnswer}
               </p>
-              <p className="mb-1 text-sm">
+              <p className="mb-1 text-lg">
                 Correct Answer: {result.correctAnswer}
               </p>
             </div>

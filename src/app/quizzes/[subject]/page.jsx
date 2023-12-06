@@ -24,7 +24,7 @@ export default async function Page({ params }) {
         {subject} Quiz Section{" "}
       </h1>
       <div className="kurdish-font ">
-        <Quiz data={data} />
+        <Quiz data={data} subject={subject}/>
       </div>
     </Layout>
   );
